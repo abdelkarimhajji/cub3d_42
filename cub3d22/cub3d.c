@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 10:13:53 by ahajji            #+#    #+#             */
-/*   Updated: 2023/10/23 13:22:07 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/10/28 21:51:05 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	raycast(t_data *data)
     {
         // printf("x:%f y:%f\n", xstart, ystart);
         if (xstart >= 0 && xstart <= 1000 && ystart >= 0 && ystart <= 956)
-            mlx_put_pixel(data->img, (int)xstart, (int)ystart, 0xFF0000FF);
+            // mlx_put_pixel(data->img, (int)xstart, (int)ystart, 0xFF0000FF);
         ystart += 1.0f;
     }
 
