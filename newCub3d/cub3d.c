@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/10/28 22:39:55 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/10/29 14:44:09 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void draw_map(t_cub3d *data, int mode)
         }
         j++;
     }
-}
+}                               
 
 int    check_wall(t_cub3d *data)
 {
@@ -121,23 +121,26 @@ int    check_wall(t_cub3d *data)
     
     if(mlx_is_key_down(data->mlx, MLX_KEY_W))
     {
-        x = data->px + (cos(to_rad(data->angle)) * move_step);
-        y = data->py + (sin(to_rad(data->angle)) * move_step);
+        x = data->px + (cos(to_rad(data->angle)) * move_step_v);
+        y = data->py + (sin(to_rad(data->angle)) * move_step_v);
+
     }
     else if(mlx_is_key_down(data->mlx, MLX_KEY_S))
     {
-        x = data->px - (cos(to_rad(data->angle)) * move_step);
-        y = data->py - (sin(to_rad(data->angle)) * move_step);
+        x = data->px - (cos(to_rad(data->angle)) * move_step_v);
+        y = data->py - (sin(to_rad(data->angle)) * move_step_v);
+
     }
     else if(mlx_is_key_down(data->mlx, MLX_KEY_D))
     {
-        x = data->px - cos(to_rad(90) - to_rad(data->angle)) * move_step;
-	    y = data->py + sin(to_rad(90) - to_rad(data->angle)) * move_step;
+        x = data->px - cos(to_rad(90) - to_rad(data->angle)) * move_step_v;
+	    y = data->py + sin(to_rad(90) - to_rad(data->angle)) * move_step_v;
+
     }
     else if(mlx_is_key_down(data->mlx, MLX_KEY_A))
     {
-        x = data->px + cos(to_rad(90) - to_rad(data->angle)) * move_step;
-	    y = data->py - sin(to_rad(90) - to_rad(data->angle)) * move_step;
+        x = data->px + cos(to_rad(90) - to_rad(data->angle)) * move_step_v;
+	    y = data->py - sin(to_rad(90) - to_rad(data->angle)) * move_step_v;
     }
     if(myMap[(int)(y / size_shape)][(int)(x / size_shape)] == '1' 
         || (myMap[(int)(y / size_shape)][(int)(data->px / size_shape)] == '1' 
@@ -154,27 +157,25 @@ float   distance_between_points(float x1, float y1, float x2, float y2)
 void ray_casting(t_cub3d *data, float dist, float ray_angle, int id_ray)
 {
     double height_wall;
-	int		proj_plane;
     int xstart;
     int ystart;
     int xend;
     int yend;
     
-	// proj_plane = (1000 / 2) / tan(60 / 2);
 	dist = dist * cos(to_rad(ray_angle) - to_rad(data->angle));
-	height_wall = (size_shape * height_win) / dist;
+	height_wall = (25 * height_win) / dist;
 	xstart = id_ray;
 	xend = id_ray;
 	ystart = (height_win / 2) - (height_wall / 2);
 	yend = (height_win / 2) + (height_wall / 2);
-    // draw_line_dda2(data, x1, y1, x2, y2, 0xFF0000FF)
-    // draw_line_dda2(data, xstart, xend,ystart, yend, 0xFF0000FF);
+
     while (ystart < yend)
     {
-        // printf("x:%f y:%f\n", xstart, ystart);
-        if (xstart >= 0 && xstart <= width_win && ystart >= 0 && ystart <= height_win)
+
+        // if (xstart >= 0 && xstart < width_win && ystart >= 0 && ystart < height_win)
+         if ( ystart >= 0 && ystart < height_win)
             mlx_put_pixel(data->img, (int)xstart, (int)ystart, 0x0000000);
-        ystart += 1.0f;
+        ystart += 1;
     }
 }
 
@@ -312,9 +313,9 @@ void draw_ceil_floor(t_cub3d *data)
         while (i < width_win)
         {
             if(j < height_win / 2)
-                mlx_put_pixel(data->img, i, j, 0x0000FFFF);
+                mlx_put_pixel(data->img, i, j, 0x0000FF88);
             else
-                mlx_put_pixel(data->img, i, j, 0x00FF00FF);
+                mlx_put_pixel(data->img, i, j, 0x00FF0088);
             i++;
         }
         // printf("hi\n");

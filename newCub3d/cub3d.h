@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/10/28 22:16:40 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/10/29 12:59:04 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 char myMap[11][16] = {
     "111111111111111",
-    "100000000010101",
+    "100000001010101",
     "100000010001001",
     "11111000010011",
     "1000001P0001011",
@@ -37,6 +37,7 @@ char myMap[11][16] = {
 #define size_shape 20
 #define speed_rotate 0.5
 #define move_step 0.5
+#define move_step_v 0.9
 #define wall_strip_width 1
 #define view_angle 60
 
