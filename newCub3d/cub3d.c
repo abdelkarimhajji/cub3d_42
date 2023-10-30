@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/10/29 14:44:09 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/10/30 11:57:50 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ float   distance_between_points(float x1, float y1, float x2, float y2)
     return  (sqrt(pow((x2 - x1), 2) +  pow((y1 - y2), 2)));
 }
 
-void ray_casting(t_cub3d *data, float dist, float ray_angle, int id_ray)
+void ray_casting(t_cub3d *data, float dist, float ray_angle, int id_ray, int color)
 {
     double height_wall;
     int xstart;
@@ -173,8 +173,8 @@ void ray_casting(t_cub3d *data, float dist, float ray_angle, int id_ray)
     {
 
         // if (xstart >= 0 && xstart < width_win && ystart >= 0 && ystart < height_win)
-         if ( ystart >= 0 && ystart < height_win)
-            mlx_put_pixel(data->img, (int)xstart, (int)ystart, 0x0000000);
+        if ( ystart >= 0 && ystart < height_win)
+            mlx_put_pixel(data->img, (int)xstart, (int)ystart, color);
         ystart += 1;
     }
 }
@@ -271,16 +271,23 @@ float dist;
 
 if(distance_horz < distance_vert)
 {
-    draw_line_dda(data, data->px, data->py, hores_inters_x , hores_inters_y, 0xFF0000FF);
+    // draw_line_dda(data, data->px, data->py, hores_inters_x , hores_inters_y, 0xFF0000FF);
     dist = distance_horz;
+    if(ray_angle >= 180 && ray_angle<= 360)
+        ray_casting(data, dist , ray_angle, id_ray, 0x00000088);
+    else
+        ray_casting(data, dist , ray_angle, id_ray, 0x88000088);
     // printf("ana  \n"); 
 }
 else
 {
-   draw_line_dda(data, data->px, data->py, vertcl_inters_x, vertcl_inters_y, 0xFF0000FF); 
+//    draw_line_dda(data, data->px, data->py, vertcl_inters_x, vertcl_inters_y, 0xFF0000FF); 
    dist = distance_vert;
+   if(ray_angle >= 90 && ray_angle <= 270)
+        ray_casting(data, dist , ray_angle, id_ray, 0xFF000088);
+    else
+        ray_casting(data, dist , ray_angle, id_ray, 0x00550088);
 }
-ray_casting(data, dist , ray_angle, id_ray);
  
 }
 
