@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/02 14:36:52 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/02 16:58:19 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,24 +321,27 @@ void draw_ceil_floor(t_cub3d *data)
     
 }
 
+void       testmouse(double xp, double yp, void *param)
+{
+    t_cub3d *data = (t_cub3d *)param;
+    if (xp >= 0 && xp <= width_win)
+        printf("%f\n", xp);
+    
+    
+}
+
 void    draw(void   *param)
 {
     t_cub3d *data = (t_cub3d *)param;
     int32_t  x;
     int32_t y;
-    mlx_get_mouse_pos(data->mlx, &x, &y);
-    if(x >= 0 && x <=  width_win)
-        printf("xx  %d\n", x);
-    if(y >= 0 && y <= height_win)
-        printf("yy  %d\n", y);
-    if(mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) || ((width_win / 2) < x  && data->old_x < x))
+    
+    mlx_cursor_hook(data->mlx, testmouse, (void *)data);
+    if(mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
     {
         data->angle += speed_rotate;
         if(data->angle >= 360)
             data->angle = 0;
-        data->old_x += speed_rotate;
-         if(data->old_x >= 360)
-            data->old_x = 0;
     }
     else if(mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
     {
@@ -388,6 +391,7 @@ int main(int ac, char **av)
     (mlx_image_to_window(data.mlx, data.img_map, 0, 0));
     if(!data.img_map)
         return 1;
+    
     draw_map(&data, 1);
     mlx_loop_hook(data.mlx, draw, &data);
     mlx_loop(data.mlx);
