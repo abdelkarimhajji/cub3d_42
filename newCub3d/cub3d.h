@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/02 20:16:48 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/02 21:06:00 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ char myMap[12][30] = {
 #define width_win  2000
 #define height_win  900
 #define speed_rotate 0.5
-#define move_step 0.5
-#define move_step_v 0.9
+#define move_step 0.2
+#define move_step_v 0.6
 #define view_angle 60
 
 typedef struct s_cub3d

@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/02 21:03:39 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/02 21:12:07 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -346,12 +346,8 @@ void       testmouse(double xp, double yp, void *param)
     
 }
 
-void    draw(void   *param)
+void    controle_angle(t_cub3d *data)
 {
-    t_cub3d *data = (t_cub3d *)param;
-    int32_t  x;
-    int32_t y;
-    
     mlx_cursor_hook(data->mlx, testmouse, (void *)data);
     if(mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
     {
@@ -365,7 +361,11 @@ void    draw(void   *param)
         if (data->angle <= 0)
             data->angle += 360;
     }
-    else if(mlx_is_key_down(data->mlx, MLX_KEY_W) && check_wall(data))
+}
+
+void    controle_player(t_cub3d *data)
+{
+    if(mlx_is_key_down(data->mlx, MLX_KEY_W) && check_wall(data))
     {
         data->px = data->px + (cos(to_rad(data->angle)) * move_step);
         data->py = data->py + (sin(to_rad(data->angle)) * move_step);
@@ -385,6 +385,14 @@ void    draw(void   *param)
         data->px = data->px + cos(to_rad(90) - to_rad(data->angle)) * move_step;
 	    data->py = data->py - sin(to_rad(90) - to_rad(data->angle)) * move_step;
     }
+}
+
+void    draw(void   *param)
+{
+    t_cub3d *data = (t_cub3d *)param;
+    
+    controle_angle(data);
+    controle_player(data);
     
     draw_ceil_floor(data);
     draw_map(data, 0);
