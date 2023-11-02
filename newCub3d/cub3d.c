@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/02 16:58:19 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/02 20:19:59 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void    init_data(t_cub3d *data)
         data->size_shape = data->size_map / data->height_map; 
     else
         data->size_shape = data->size_map / data->width_map; 
-    data->old_x = 0;
+    data->old_x = width_win;
 }
 
 void    draw_rectangle(int x, int y, t_cub3d *data, uint32_t color)
@@ -324,8 +324,15 @@ void draw_ceil_floor(t_cub3d *data)
 void       testmouse(double xp, double yp, void *param)
 {
     t_cub3d *data = (t_cub3d *)param;
-    if (xp >= 0 && xp <= width_win)
-        printf("%f\n", xp);
+    
+    if (xp >= 0 && xp <= width_win && yp >= 0 && yp <= height_win)
+    {
+        if(xp > data->old_x)
+            data->angle++;
+        else
+            data->angle--;
+        data->old_x = xp;
+    }
     
     
 }

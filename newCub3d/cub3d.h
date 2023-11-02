@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/02 14:29:26 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/02 20:16:48 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ typedef struct s_cub3d
     float       angle;
     float       number_rays;
     mlx_texture_t *load_img;
-    float     old_x;
+    double      old_x;
 }               t_cub3d;
