@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/01 15:36:42 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/02 14:36:52 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void    draw_line_dda(t_cub3d *data, float  x1, float   y1, float  x2, float  y2
 
 void    init_data(t_cub3d *data)
 {
-    data->width_map = 37;
-    data->height_map = 30;
+    data->width_map = 30;
+    data->height_map = 12;
     data->angle = 270;
     data->number_rays = width_win;
     if(width_win / 9 > height_win / 9)
@@ -58,6 +58,7 @@ void    init_data(t_cub3d *data)
         data->size_shape = data->size_map / data->height_map; 
     else
         data->size_shape = data->size_map / data->width_map; 
+    data->old_x = 0;
 }
 
 void    draw_rectangle(int x, int y, t_cub3d *data, uint32_t color)
@@ -153,7 +154,7 @@ void ray_casting(t_cub3d *data, float dist, float ray_angle, int id_ray, int col
     int yend;
     
 	dist = dist * cos(to_rad(ray_angle) - to_rad(data->angle));
-	height_wall = ((data->size_shape) * height_win) / dist;
+	height_wall = ((data->size_shape ) * height_win) / dist;
 	xstart = id_ray;
 	xend = id_ray;
 	ystart = (height_win / 2) - (height_wall / 2);
@@ -290,7 +291,6 @@ void    draw_view_angle(t_cub3d *data)
     if (ray_angle < 0)
         ray_angle = 360 + ray_angle;
     int id_ray = 0;
-    // printf("ray angle %f\n", ray_angle);
     while (i < data->number_rays)
     {
         if (ray_angle >= 360)
@@ -300,7 +300,6 @@ void    draw_view_angle(t_cub3d *data)
         ray_angle += (view_angle / data->number_rays) ;
         i++;
     }
-    // printf("ray angle %f\n", ray_angle);
 }
 void draw_ceil_floor(t_cub3d *data)
 {
@@ -317,7 +316,6 @@ void draw_ceil_floor(t_cub3d *data)
                 mlx_put_pixel(data->img, i, j, 0x00FF0088);
             i++;
         }
-        // printf("hi\n");
         j++;
     }
     
@@ -326,14 +324,23 @@ void draw_ceil_floor(t_cub3d *data)
 void    draw(void   *param)
 {
     t_cub3d *data = (t_cub3d *)param;
-
-    if(mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) )
+    int32_t  x;
+    int32_t y;
+    mlx_get_mouse_pos(data->mlx, &x, &y);
+    if(x >= 0 && x <=  width_win)
+        printf("xx  %d\n", x);
+    if(y >= 0 && y <= height_win)
+        printf("yy  %d\n", y);
+    if(mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) || ((width_win / 2) < x  && data->old_x < x))
     {
         data->angle += speed_rotate;
         if(data->angle >= 360)
             data->angle = 0;
+        data->old_x += speed_rotate;
+         if(data->old_x >= 360)
+            data->old_x = 0;
     }
-    else if(mlx_is_key_down(data->mlx, MLX_KEY_LEFT)  )
+    else if(mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
     {
         data->angle -= speed_rotate;
         if (data->angle <= 0)
@@ -361,7 +368,6 @@ void    draw(void   *param)
     }
     
     draw_ceil_floor(data);
-    // check_rays_draw(data, data->angle);
     draw_map(data, 0);
     draw_view_angle(data);
     mlx_put_pixel(data->img, data->px, data->py, 0xFF0000FF);
