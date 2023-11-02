@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/02 20:19:59 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/02 21:03:39 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -328,9 +328,18 @@ void       testmouse(double xp, double yp, void *param)
     if (xp >= 0 && xp <= width_win && yp >= 0 && yp <= height_win)
     {
         if(xp > data->old_x)
-            data->angle++;
+        {
+            data->angle += (speed_rotate + 0.1);
+            if(data->angle >= 360)
+            data->angle -= 360;
+        }
+        
         else
-            data->angle--;
+        {
+            data->angle-= speed_rotate;
+            if (data->angle <= 0)
+            data->angle += 360;            
+        }
         data->old_x = xp;
     }
     
@@ -348,13 +357,13 @@ void    draw(void   *param)
     {
         data->angle += speed_rotate;
         if(data->angle >= 360)
-            data->angle = 0;
+            data->angle -= 360;
     }
     else if(mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
     {
         data->angle -= speed_rotate;
         if (data->angle <= 0)
-            data->angle = 360;
+            data->angle += 360;
     }
     else if(mlx_is_key_down(data->mlx, MLX_KEY_W) && check_wall(data))
     {
