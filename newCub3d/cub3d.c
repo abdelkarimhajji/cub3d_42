@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/02 21:12:07 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/02 22:38:20 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ float   to_rad(float degree)
     return(degree * (M_PI / 180));
 }
 
-void    draw_line_dda(t_cub3d *data, float  x1, float   y1, float  x2, float  y2, uint32_t color)
+void    draw_line_dda(t_cub3d *data, float  x2, float  y2, uint32_t color)
 {
     float   dx;
     float   dy;
     float   steps;
     float   increamentx;
     float   increamenty;
+    float   x1 = data->px;
+    float   y1 = data->py;
     int i = 0;
     
     dx = x2 - x1;
@@ -94,6 +96,8 @@ void draw_map(t_cub3d *data, int mode)
                 draw_rectangle( i * data->size_shape, j * data->size_shape, data, 0xFFFFFFFF);
 			if (myMap[j][i] == '0' || (mode == 0 && myMap[j][i] == 'P'))
 				draw_rectangle( i * data->size_shape, j * data->size_shape, data, 0x000000FF);
+            if(myMap[j][i] == ' ')
+                draw_rectangle( i * data->size_shape, j * data->size_shape, data, 0xFF000033);
             if(myMap[j][i] == 'P' && mode)
             {
 				draw_rectangle(i * data->size_shape, j * data->size_shape, data, 0x000000FF);
@@ -105,24 +109,29 @@ void draw_map(t_cub3d *data, int mode)
     }
 }                               
 
+void    check_wall_part_tow(t_cub3d *data, int *x, int *y)
+{
+    if(mlx_is_key_down(data->mlx, MLX_KEY_W))
+    {
+        *x = data->px + (cos(to_rad(data->angle)) * move_step_v);
+        *y = data->py + (sin(to_rad(data->angle)) * move_step_v);
+
+    }
+    else if(mlx_is_key_down(data->mlx, MLX_KEY_S))
+    {
+        *x = data->px - (cos(to_rad(data->angle)) * move_step_v);
+        *y = data->py - (sin(to_rad(data->angle)) * move_step_v);
+
+    }
+}
+
 int    check_wall(t_cub3d *data)
 {
     int x;
     int y;
     
-    if(mlx_is_key_down(data->mlx, MLX_KEY_W))
-    {
-        x = data->px + (cos(to_rad(data->angle)) * move_step_v);
-        y = data->py + (sin(to_rad(data->angle)) * move_step_v);
-
-    }
-    else if(mlx_is_key_down(data->mlx, MLX_KEY_S))
-    {
-        x = data->px - (cos(to_rad(data->angle)) * move_step_v);
-        y = data->py - (sin(to_rad(data->angle)) * move_step_v);
-
-    }
-    else if(mlx_is_key_down(data->mlx, MLX_KEY_D))
+    check_wall_part_tow(data, &x, &y);
+    if(mlx_is_key_down(data->mlx, MLX_KEY_D))
     {
         x = data->px - cos(to_rad(90) - to_rad(data->angle)) * move_step_v;
 	    y = data->py + sin(to_rad(90) - to_rad(data->angle)) * move_step_v;
@@ -175,111 +184,94 @@ void ray_casting(t_cub3d *data, float dist, float ray_angle, int id_ray, int col
 void    check_rays_draw(t_cub3d *data, float ray_angle, int id_ray)
 {
  
-float hores_inters_x;
-float hores_inters_y;
-float next_hor_inters_x;
-float next_hor_inters_y;
-float step_hor_x;
-float step_hor_y;
+
 // horisontal down
 if(ray_angle > 0 && ray_angle  < 180)
 {
-    hores_inters_y = floor((data->py / data->size_shape) + 1) * data->size_shape;
-    hores_inters_x = data->px + (hores_inters_y - data->py) / tan(to_rad(ray_angle));
-    next_hor_inters_y = hores_inters_y + data->size_shape;
-    next_hor_inters_x =  hores_inters_x + ((next_hor_inters_y - hores_inters_y) / tan(to_rad(ray_angle))) ;
-    step_hor_y = data->size_shape;
-    step_hor_x = next_hor_inters_x - hores_inters_x;
-    while (((int)(hores_inters_x / data->size_shape)) < data->width_map && ((int)(hores_inters_y / data->size_shape)) < data->height_map
-        && hores_inters_x >= 0 && hores_inters_y >= 0 && myMap[(int)(hores_inters_y / data->size_shape)][(int)(hores_inters_x / data->size_shape)] != '1' )
+    data->hores_inters_y = floor((data->py / data->size_shape) + 1) * data->size_shape;
+    data->hores_inters_x = data->px + (data->hores_inters_y - data->py) / tan(to_rad(ray_angle));
+    data->next_hor_inters_y = data->hores_inters_y + data->size_shape;
+    data->next_hor_inters_x =  data->hores_inters_x + ((data->next_hor_inters_y - data->hores_inters_y) / tan(to_rad(ray_angle))) ;
+    data->step_hor_y = data->size_shape;
+    data->step_hor_x = data->next_hor_inters_x - data->hores_inters_x;
+    while (((int)(data->hores_inters_x / data->size_shape)) < data->width_map && ((int)(data->hores_inters_y / data->size_shape)) < data->height_map
+        && data->hores_inters_x >= 0 && data->hores_inters_y >= 0 && myMap[(int)(data->hores_inters_y / data->size_shape)][(int)(data->hores_inters_x / data->size_shape)] != '1' )
     {
-        hores_inters_y += step_hor_y;
-        hores_inters_x += step_hor_x;
+        data->hores_inters_y += data->step_hor_y;
+        data->hores_inters_x += data->step_hor_x;
     }
 }
 
 // // horizontal  up
 else
 {
-    hores_inters_y = floor((data->py / data->size_shape)) * data->size_shape;
-    hores_inters_x = data->px - ((data->py - hores_inters_y) / tan(to_rad(ray_angle)));
-    next_hor_inters_y = hores_inters_y - data->size_shape;
-    next_hor_inters_x =  hores_inters_x - ((hores_inters_y - next_hor_inters_y) / tan(to_rad(ray_angle))) ;
-    step_hor_y = data->size_shape;
-    step_hor_x = next_hor_inters_x - hores_inters_x;
+    data->hores_inters_y = floor((data->py / data->size_shape)) * data->size_shape;
+    data->hores_inters_x = data->px - ((data->py - data->hores_inters_y) / tan(to_rad(ray_angle)));
+    data->next_hor_inters_y = data->hores_inters_y - data->size_shape;
+    data->next_hor_inters_x =  data->hores_inters_x - ((data->hores_inters_y - data->next_hor_inters_y) / tan(to_rad(ray_angle))) ;
+    data->step_hor_y = data->size_shape;
+    data->step_hor_x = data->next_hor_inters_x - data->hores_inters_x;
 
-    while (((int)(hores_inters_x / data->size_shape))  < data->width_map && ((int)((hores_inters_y - 1) / data->size_shape)) < data->height_map
-        && hores_inters_x >= 0 && hores_inters_y >= 0 && myMap[(int)((hores_inters_y - 1) / data->size_shape)][(int)(hores_inters_x / data->size_shape)] != '1')
+    while (((int)(data->hores_inters_x / data->size_shape))  < data->width_map && ((int)((data->hores_inters_y - 1) / data->size_shape)) < data->height_map
+        && data->hores_inters_x >= 0 && data->hores_inters_y >= 0 && myMap[(int)((data->hores_inters_y - 1) / data->size_shape)][(int)(data->hores_inters_x / data->size_shape)] != '1')
     {
-        hores_inters_y -= step_hor_y;
-        hores_inters_x += step_hor_x;
+        data->hores_inters_y -= data->step_hor_y;
+        data->hores_inters_x += data->step_hor_x;
     }
 }
 
-float vertcl_inters_x;
-float vertcl_inters_y;
-float next_ver_inters_x;
-float next_ver_inters_y;
-float step_ver_x;
-float step_ver_y;
+
 // vertical right
 
 if(ray_angle < 90 || ray_angle > 270)
 {
-    vertcl_inters_x = floor((data->px / data->size_shape) + 1) * data->size_shape;
-    vertcl_inters_y = data->py - ((data->px - vertcl_inters_x) * tan(to_rad(ray_angle))) ;
-    next_ver_inters_x = vertcl_inters_x + data->size_shape;
-    next_ver_inters_y = vertcl_inters_y - ((vertcl_inters_x - next_ver_inters_x) * tan(to_rad(ray_angle)));
-    step_ver_x = data->size_shape;
-    step_ver_y = next_ver_inters_y - vertcl_inters_y;
-    while (((int)(vertcl_inters_x / data->size_shape)) < data->width_map && ((int)(vertcl_inters_y / data->size_shape)) < data->height_map
-        && vertcl_inters_x >= 0 && vertcl_inters_y >= 0 && myMap[(int)(vertcl_inters_y / data->size_shape)][(int)(vertcl_inters_x / data->size_shape)] != '1' )
+    data->vertcl_inters_x = floor((data->px / data->size_shape) + 1) * data->size_shape;
+    data->vertcl_inters_y = data->py - ((data->px - data->vertcl_inters_x) * tan(to_rad(ray_angle))) ;
+    data->next_ver_inters_x = data->vertcl_inters_x + data->size_shape;
+    data->next_ver_inters_y = data->vertcl_inters_y - ((data->vertcl_inters_x - data->next_ver_inters_x) * tan(to_rad(ray_angle)));
+    data->step_ver_x = data->size_shape;
+    data->step_ver_y = data->next_ver_inters_y - data->vertcl_inters_y;
+    while (((int)(data->vertcl_inters_x / data->size_shape)) < data->width_map && ((int)(data->vertcl_inters_y / data->size_shape)) < data->height_map
+        && data->vertcl_inters_x >= 0 && data->vertcl_inters_y >= 0 && myMap[(int)(data->vertcl_inters_y / data->size_shape)][(int)(data->vertcl_inters_x / data->size_shape)] != '1' )
     {
-        vertcl_inters_y += step_ver_y;
-        vertcl_inters_x += step_ver_x;
+        data->vertcl_inters_y += data->step_ver_y;
+        data->vertcl_inters_x += data->step_ver_x;
     }
 }
 else
 {
-    vertcl_inters_x = floor((data->px / data->size_shape)) * data->size_shape;
-    vertcl_inters_y = data->py - ((data->px - vertcl_inters_x) * tan(to_rad(ray_angle))) ;
-    next_ver_inters_x = vertcl_inters_x - data->size_shape;
-    next_ver_inters_y = vertcl_inters_y - ((vertcl_inters_x - next_ver_inters_x) * tan(to_rad(ray_angle)));
-    step_ver_x = data->size_shape;
-    step_ver_y = next_ver_inters_y - vertcl_inters_y;
-     while (((int)((vertcl_inters_x - 1) / data->size_shape))  < data->width_map && ((int)(vertcl_inters_y / data->size_shape)) < data->height_map
-        && vertcl_inters_x >= 0 && vertcl_inters_y >= 0 && myMap[(int)(vertcl_inters_y / data->size_shape)][(int)((vertcl_inters_x - 1) / data->size_shape)] != '1' )
+    data->vertcl_inters_x = floor((data->px / data->size_shape)) * data->size_shape;
+    data->vertcl_inters_y = data->py - ((data->px - data->vertcl_inters_x) * tan(to_rad(ray_angle))) ;
+    data->next_ver_inters_x = data->vertcl_inters_x - data->size_shape;
+    data->next_ver_inters_y = data->vertcl_inters_y - ((data->vertcl_inters_x - data->next_ver_inters_x) * tan(to_rad(ray_angle)));
+    data->step_ver_x = data->size_shape;
+    data->step_ver_y = data->next_ver_inters_y - data->vertcl_inters_y;
+     while (((int)((data->vertcl_inters_x - 1) / data->size_shape))  < data->width_map && ((int)(data->vertcl_inters_y / data->size_shape)) < data->height_map
+        && data->vertcl_inters_x >= 0 && data->vertcl_inters_y >= 0 && myMap[(int)(data->vertcl_inters_y / data->size_shape)][(int)((data->vertcl_inters_x - 1) / data->size_shape)] != '1' )
     {
-        vertcl_inters_y += step_ver_y;
-        vertcl_inters_x -= step_ver_x;
+        data->vertcl_inters_y += data->step_ver_y;
+        data->vertcl_inters_x -= data->step_ver_x;
     }
 }
 
+data->distance_horz = distance_between_points(data->px, data->py, data->hores_inters_x, data->hores_inters_y);
+data->distance_vert = distance_between_points(data->px, data->py, data->vertcl_inters_x, data->vertcl_inters_y);
 
-
-float distance_horz = distance_between_points(data->px, data->py, hores_inters_x, hores_inters_y);
-float distance_vert = distance_between_points(data->px, data->py, vertcl_inters_x, vertcl_inters_y);
-
-float dist;
-
-if(distance_horz < distance_vert)
+if(data->distance_horz < data->distance_vert)
 {
-    dist = distance_horz;
     if(ray_angle >= 180 && ray_angle<= 360)
-        ray_casting(data, dist , ray_angle, id_ray, 0x00000088);
+        ray_casting(data, data->distance_horz , ray_angle, id_ray, 0x00000088);
     else
-        ray_casting(data, dist , ray_angle, id_ray, 0x88000088);
-    draw_line_dda(data, data->px, data->py, hores_inters_x , hores_inters_y, 0xFF0000FF);
-    // printf("ana  \n"); 
+        ray_casting(data, data->distance_horz , ray_angle, id_ray, 0x88000088);
+    draw_line_dda(data,  data->hores_inters_x , data->hores_inters_y, 0xFF0000FF);
 }
 else
 {
-   dist = distance_vert;
    if(ray_angle >= 90 && ray_angle <= 270)
-        ray_casting(data, dist , ray_angle, id_ray, 0xFF000088);
+        ray_casting(data, data->distance_vert , ray_angle, id_ray, 0xFF000088);
     else
-        ray_casting(data, dist , ray_angle, id_ray, 0x00550088);
-   draw_line_dda(data, data->px, data->py, vertcl_inters_x, vertcl_inters_y, 0xFF0000FF); 
+        ray_casting(data, data->distance_vert , ray_angle, id_ray, 0x00550088);
+   draw_line_dda(data,  data->vertcl_inters_x, data->vertcl_inters_y, 0xFF0000FF); 
 }
  
 }
