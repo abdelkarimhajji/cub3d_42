@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/03 12:16:35 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/03 12:41:29 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,10 @@ typedef struct s_cub3d
 float   to_rad(float degree);
 void    draw_line_dda(t_cub3d *data, float  x2, float  y2, uint32_t color);
 float   distance_between_points(float x1, float y1, float x2, float y2);
+void draw_map(t_cub3d *data, int mode);
+void    draw_view_angle(t_cub3d *data);
+void    check_ray_draw(t_cub3d *data, float ray_angle, int id_ray);
+void ray_casting(t_cub3d *data, float dist, float ray_angle, int id_ray, int color);
+void       move_mouse(double xp, double yp, void *param);
 
 #endif
