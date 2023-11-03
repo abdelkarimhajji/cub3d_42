@@ -12,39 +12,39 @@
 
 #include "cub3d.h"
 
-float   to_rad(float degree)
+float	to_rad(float degree)
 {
-    return(degree * (M_PI / 180));
+	return (degree * (M_PI / 180));
 }
-void    draw_line_dda(t_cub3d *data, float  x2, float  y2, uint32_t color)
+void	draw_line_dda(t_cub3d *data, float x2, float y2, uint32_t color)
 {
-    float   dx;
-    float   dy;
-    float   x1;
-    float   y1;
-    int i;
-    
-    i = 0;
-    x1 = data->px;
-    y1 = data->py;
-    dx = x2 - x1;
-    dy = y2 - y1;
-    if (fabs(dx) > fabs(dy))
-        data->steps = fabs(dx);
-    else
-        data->steps = fabs(dy);
-    data->increamentx = dx / data->steps;
-    data->increamenty = dy / data->steps;
-    while (i <= data->steps)
-    {
-        mlx_put_pixel(data->img_map, round(x1), round(y1), color);
-        x1 += data->increamentx;
-        y1 += data->increamenty;        
-        i++;
-    }
+	float	dx;
+	float	dy;
+	float	x1;
+	float	y1;
+	int		i;
+
+	i = 0;
+	x1 = data->px;
+	y1 = data->py;
+	dx = x2 - x1;
+	dy = y2 - y1;
+	if (fabs(dx) > fabs(dy))
+		data->steps = fabs(dx);
+	else
+		data->steps = fabs(dy);
+	data->increamentx = dx / data->steps;
+	data->increamenty = dy / data->steps;
+	while (i <= data->steps)
+	{
+		mlx_put_pixel(data->img_map, round(x1), round(y1), color);
+		x1 += data->increamentx;
+		y1 += data->increamenty;
+		i++;
+	}
 }
 
-float   distance_between_points(float x1, float y1, float x2, float y2)
+float	distance_between_points(float x1, float y1, float x2, float y2)
 {
-    return  (sqrt(pow((x2 - x1), 2) +  pow((y1 - y2), 2)));
+	return (sqrt(pow((x2 - x1), 2) + pow((y1 - y2), 2)));
 }
