@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/02 22:35:12 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/03 11:42:32 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,7 @@ typedef struct s_cub3d
     float next_ver_inters_y;
     float step_ver_x;
     float step_ver_y;
+    float   steps;
+    float   increamentx;
+    float   increamenty;
 }               t_cub3d;
