@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:52:59 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/03 11:54:34 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/04 14:21:42 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ float	to_rad(float degree)
 {
 	return (degree * (M_PI / 180));
 }
+
 void	draw_line_dda(t_cub3d *data, float x2, float y2, uint32_t color)
 {
 	float	dx;

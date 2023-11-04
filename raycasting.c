@@ -6,14 +6,13 @@
 /*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:37:30 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/03 15:26:33 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/04 14:21:19 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ray_casting(t_cub3d *data, float dist, float ray_angle, int id_ray,
-		int color)
+void	ray_casting(t_cub3d *data, float ray_angle, int id_ray, int color)
 {
 	double	height_wall;
 	int		xstart;
@@ -21,8 +20,8 @@ void	ray_casting(t_cub3d *data, float dist, float ray_angle, int id_ray,
 	int		xend;
 	int		yend;
 
-	dist = dist * cos(to_rad(ray_angle) - to_rad(data->angle));
-	height_wall = ((data->size_shape) * height_win) / dist;
+	data->dist = data->dist * cos(to_rad(ray_angle) - to_rad(data->angle));
+	height_wall = ((data->size_shape) * height_win) / data->dist;
 	xstart = id_ray;
 	xend = id_ray;
 	ystart = (height_win / 2) - (height_wall / 2);
@@ -38,6 +37,7 @@ void	ray_casting(t_cub3d *data, float dist, float ray_angle, int id_ray,
 		ystart += 1;
 	}
 }
+
 void	check_ray_draw_down(t_cub3d *data, float ray_angle, int id_ray)
 {
 	data->hores_inters_y = floor((data->py / data->size_shape) + 1)
@@ -120,7 +120,7 @@ void	check_ray_draw_left(t_cub3d *data, float ray_angle, int id_ray)
 	data->step_ver_x = data->size_shape;
 	data->step_ver_y = data->next_ver_inters_y - data->vertcl_inters_y;
 	while (((int)((data->vertcl_inters_x - 1)
-				/ data->size_shape)) < data->width_map
+			/ data->size_shape)) < data->width_map
 		&& ((int)(data->vertcl_inters_y / data->size_shape)) < data->height_map
 		&& data->vertcl_inters_x >= 0 && data->vertcl_inters_y >= 0
 		&& myMap[(int)(data->vertcl_inters_y

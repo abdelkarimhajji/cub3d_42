@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:17:09 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/03 15:18:52 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/04 14:10:53 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	check_wall_part_tow(t_cub3d *data, int *x, int *y)
 
 int	check_wall(t_cub3d *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	check_wall_part_tow(data, &x, &y);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_D))

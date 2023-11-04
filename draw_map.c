@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:21:24 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/03 15:52:38 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/04 14:10:29 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,24 @@ void	draw_rectangle(int x, int y, t_cub3d *data, uint32_t color)
 	}
 }
 
-void    draw_map_2(t_cub3d *data, int mode, int i, int j)
+void	draw_map_2(t_cub3d *data, int mode, int i, int j)
 {
-    if (myMap[j][i] == '1')
-        draw_rectangle(i * data->size_shape, j * data->size_shape, data,
-            0xFFFFFFFF);
-    if (myMap[j][i] == '0' || (mode == 0 && myMap[j][i] == 'P'))
-        draw_rectangle(i * data->size_shape, j * data->size_shape, data,
-            0x000000FF);
-    if (myMap[j][i] == ' ')
-        draw_rectangle(i * data->size_shape, j * data->size_shape, data,
-            0xFF000033);
-    if (myMap[j][i] == 'P' && mode)
-    {
-        draw_rectangle(i * data->size_shape, j * data->size_shape, data,
-            0x000000FF);
-        mlx_put_pixel(data->img, data->px = (i * data->size_shape) + 13,
-            data->py = (j * data->size_shape) + 13, 0xFF0000FF);
-    }
+	if (myMap[j][i] == '1')
+		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
+			0xFFFFFFFF);
+	if (myMap[j][i] == '0' || (mode == 0 && myMap[j][i] == 'P'))
+		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
+			0x000000FF);
+	if (myMap[j][i] == ' ')
+		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
+			0xFF000033);
+	if (myMap[j][i] == 'P' && mode)
+	{
+		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
+			0x000000FF);
+		mlx_put_pixel(data->img, data->px = (i * data->size_shape) + 13,
+			data->py = (j * data->size_shape) + 13, 0xFF0000FF);
+	}
 }
 
 void	draw_map(t_cub3d *data, int mode)
@@ -91,10 +91,13 @@ void	draw_view_angle(t_cub3d *data)
 		i++;
 	}
 }
+
 void	draw_ceil_floor(t_cub3d *data)
 {
-	int i;
-	int j = 0;
+	int	i;
+	int	j;
+
+	j = 0;
 	while (j < height_win)
 	{
 		i = 0;
