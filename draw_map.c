@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:21:24 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/04 14:10:29 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/09 14:09:08 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,14 @@ void	draw_map(t_cub3d *data, int mode)
 	}
 }
 
-void	draw_view_angle(t_cub3d *data)
+void	draw_VIEW_ANGLE(t_cub3d *data)
 {
 	int		i;
 	float	ray_angle;
 	int		id_ray;
 
 	i = 0;
-	ray_angle = data->angle - (view_angle / 2);
+	ray_angle = data->angle - (VIEW_ANGLE / 2);
 	if (ray_angle < 0)
 		ray_angle = 360 + ray_angle;
 	id_ray = 0;
@@ -87,7 +87,7 @@ void	draw_view_angle(t_cub3d *data)
 			ray_angle -= 360;
 		check_ray_draw(data, ray_angle, id_ray);
 		id_ray++;
-		ray_angle += (view_angle / data->number_rays);
+		ray_angle += (VIEW_ANGLE / data->number_rays);
 		i++;
 	}
 }
@@ -98,12 +98,12 @@ void	draw_ceil_floor(t_cub3d *data)
 	int	j;
 
 	j = 0;
-	while (j < height_win)
+	while (j < HEIGHT_WIN)
 	{
 		i = 0;
-		while (i < width_win)
+		while (i < WIDTH_WIN)
 		{
-			if (j < height_win / 2)
+			if (j < HEIGHT_WIN / 2)
 				mlx_put_pixel(data->img, i, j, 0x0000FF88);
 			else
 				mlx_put_pixel(data->img, i, j, 0x00FF0088);

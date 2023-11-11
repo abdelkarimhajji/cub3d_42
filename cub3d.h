@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/04 14:17:59 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/09 14:09:08 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define width_win 2000
-# define height_win 900
-# define speed_rotate 0.5
-# define move_step 0.2
-# define move_step_v 0.6
-# define view_angle 60
+# define WIDTH_WIN 2000
+# define HEIGHT_WIN 900
+# define SPEED_ROTATE 0.5
+# define MOVE_STEP 0.2
+# define MOVE_STEP_V 0.6
+# define VIEW_ANGLE 60
 
 static char			myMap[12][30] = {"111111111111111111111111111111",
 				"100000001010101000110001     1",
@@ -81,7 +81,7 @@ void				draw_line_dda(t_cub3d *data, float x2, float y2,
 float				distance_between_points(float x1, float y1, float x2,
 						float y2);
 void				draw_map(t_cub3d *data, int mode);
-void				draw_view_angle(t_cub3d *data);
+void				draw_VIEW_ANGLE(t_cub3d *data);
 void				check_ray_draw(t_cub3d *data, float ray_angle, int id_ray);
 void				ray_casting(t_cub3d *data, float ray_angle,
 						int id_ray, int color);

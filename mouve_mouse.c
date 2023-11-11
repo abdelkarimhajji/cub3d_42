@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_mouse.c                                       :+:      :+:    :+:   */
+/*   mouve_mouse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:39:17 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/03 12:41:22 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/09 14:07:51 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	move_mouse(double xp, double yp, void *param)
 	t_cub3d	*data;
 
 	data = (t_cub3d *)param;
-	if (xp >= 0 && xp <= width_win && yp >= 0 && yp <= height_win)
+	if (xp >= 0 && xp <= WIDTH_WIN && yp >= 0 && yp <= HEIGHT_WIN)
 	{
 		if (xp > data->old_x)
 		{
-			data->angle += (speed_rotate + 0.1);
+			data->angle += (SPEED_ROTATE + 0.1);
 			if (data->angle >= 360)
 				data->angle -= 360;
 		}
 		else
 		{
-			data->angle -= speed_rotate;
+			data->angle -= SPEED_ROTATE;
 			if (data->angle <= 0)
 				data->angle += 360;
 		}

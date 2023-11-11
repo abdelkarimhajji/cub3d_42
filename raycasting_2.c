@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:32:35 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/04 14:21:32 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/09 14:05:27 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 void	call_raycasting(t_cub3d *data, float ray_angle, int id_ray)
-{	
+{
 	if (data->distance_horz < data->distance_vert)
 	{
 		data->dist = data->distance_horz;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:37:30 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/04 14:21:19 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/09 14:07:22 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ void	ray_casting(t_cub3d *data, float ray_angle, int id_ray, int color)
 	int		yend;
 
 	data->dist = data->dist * cos(to_rad(ray_angle) - to_rad(data->angle));
-	height_wall = ((data->size_shape) * height_win) / data->dist;
+	height_wall = ((data->size_shape) * HEIGHT_WIN) / data->dist;
 	xstart = id_ray;
 	xend = id_ray;
-	ystart = (height_win / 2) - (height_wall / 2);
-	yend = (height_win / 2) + (height_wall / 2);
+	ystart = (HEIGHT_WIN / 2) - (height_wall / 2);
+	yend = (HEIGHT_WIN / 2) + (height_wall / 2);
 	if (ystart < 0)
 		ystart = 0;
-	if (yend > height_win)
-		yend = height_win;
+	if (yend > HEIGHT_WIN)
+		yend = HEIGHT_WIN;
 	while (ystart < yend)
 	{
-		if (ystart >= 0 && ystart < height_win)
+		if (ystart >= 0 && ystart < HEIGHT_WIN)
 			mlx_put_pixel(data->img, (int)xstart, (int)ystart, color);
 		ystart += 1;
 	}
