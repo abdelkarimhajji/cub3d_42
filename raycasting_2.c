@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:32:35 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/09 14:05:27 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/21 14:52:21 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	call_raycasting(t_cub3d *data, float ray_angle, int id_ray)
 			ray_casting(data, ray_angle, id_ray, 0x00000088);
 		else
 			ray_casting(data, ray_angle, id_ray, 0x88000088);
+		data->presentTexture = (data->hores_inters_x / data->size_shape) - ((int)(data->hores_inters_x / data->size_shape));
 		draw_line_dda(data, data->hores_inters_x, data->hores_inters_y,
 			0xFF0000FF);
 	}
@@ -31,6 +32,7 @@ void	call_raycasting(t_cub3d *data, float ray_angle, int id_ray)
 			ray_casting(data, ray_angle, id_ray, 0xFF000088);
 		else
 			ray_casting(data, ray_angle, id_ray, 0x00550088);
+		data->presentTexture = (data->vertcl_inters_y / data->size_shape) - ((int)(data->vertcl_inters_y / data->size_shape));
 		draw_line_dda(data, data->vertcl_inters_x, data->vertcl_inters_y,
 			0xFF0000FF);
 	}

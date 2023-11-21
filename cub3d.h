@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/09 14:09:08 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/21 13:04:39 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_cub3d
 	float			steps;
 	float			increamentx;
 	float			increamenty;
+	float			presentTexture;
 }					t_cub3d;
 
 float				to_rad(float degree);
