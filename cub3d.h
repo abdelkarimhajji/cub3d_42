@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/21 13:04:39 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/21 15:10:23 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_cub3d
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	mlx_image_t		*img_map;
+	mlx_image_t		*brickwall;
 	int				width_map;
 	int				height_map;
 	int				size_map;

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/21 12:59:23 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/22 17:13:52 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "MLX/MLX42.h"
 
 void	init_data(t_cub3d *data)
 {
@@ -67,11 +68,12 @@ void	draw(void *param)
 int	main(int ac, char **av)
 {
 	t_cub3d	data;
-
 	data.mlx = mlx_init(WIDTH_WIN, HEIGHT_WIN, "cub3d", true);
 	if (!data.mlx)
 		return (1);
 	init_data(&data);
+	mlx_texture_t *brick = mlx_load_png("./sandwall.png");
+	data.brickwall = mlx_texture_to_image(data.mlx, brick);
 	data.img_map = mlx_new_image(data.mlx, data.size_map, data.size_map);
 	data.img = mlx_new_image(data.mlx, WIDTH_WIN, HEIGHT_WIN);
 	if (!data.img || (mlx_image_to_window(data.mlx, data.img, 0, 0)))
