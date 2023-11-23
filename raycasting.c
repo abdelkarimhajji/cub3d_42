@@ -6,13 +6,13 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:37:30 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/23 10:47:28 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/23 11:27:43 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-uint32_t    getPixelColor(mlx_image_t *img, int x, int y)
+uint32_t    get_texel(mlx_image_t *img, int x, int y)
 {
     uint8_t *pixel;
     uint8_t alpha;
@@ -54,7 +54,7 @@ void	ray_casting(t_cub3d *data, float ray_angle, int id_ray, int color)
 		if (ystart >= 0 && ystart < HEIGHT_WIN)
 		{
 			if (y < 128)
-				mlx_put_pixel(data->img,  xstart, (int)ystart, getPixelColor(data->brickwall, x, y));
+				mlx_put_pixel(data->img,  xstart, (int)ystart, get_texel(data->brickwall, x, y));
 			else
 			printf("y == %d\n", y);
 		}
