@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:37:30 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/23 11:27:43 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/23 15:22:57 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	ray_casting(t_cub3d *data, float ray_angle, int id_ray, int color)
 	xend = id_ray;
 	ystart = (HEIGHT_WIN / 2) - (height_wall / 2);
 	yend = (HEIGHT_WIN / 2) + (height_wall / 2);
-	if (ystart < 0)
-		ystart = 0;
+	// if (ystart < 0)
+	// 	ystart = 0;
 	if (yend > HEIGHT_WIN)
 		yend = HEIGHT_WIN;
 	int x = data->presentTexture * data->brickwall->width;
