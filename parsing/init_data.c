@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_data.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/25 16:59:43 by nachab            #+#    #+#             */
+/*   Updated: 2023/11/25 16:59:44 by nachab           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 void    init_struct(t_cub3d *game_data) 
@@ -47,5 +59,4 @@ void init_game(char *path_file, t_cub3d *data)
     check_dimensions(data);
     check_walls(data);
     check_valid_path(data);
-    // printf("runs well\n");
 }
