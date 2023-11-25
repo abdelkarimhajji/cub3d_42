@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:37:30 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/25 12:57:05 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/25 17:18:12 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ void	ray_casting(t_cub3d *data, float ray_angle, int id_ray, mlx_image_t *img)
 	xstart = id_ray;
 	xend = id_ray;
 	ystart = (HEIGHT_WIN / 2) - (height_wall / 2);
-	yend = ystart + height_wall;
-	if (yend >= HEIGHT_WIN)
+	yend = (HEIGHT_WIN / 2) + (height_wall / 2);
+	// if (ystart < 0)
+	// 	ystart = 0;
+	if (yend > HEIGHT_WIN)
 		yend = HEIGHT_WIN;
 	int x = data->presentTexture * img->width;
 	int j = ystart;
