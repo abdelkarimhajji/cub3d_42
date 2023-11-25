@@ -1,6 +1,37 @@
-all:
-	gcc -fsanitize=address -g cub3d.c tools.c draw_map.c raycasting.c mouve_mouse.c move_player.c raycasting_2.c -o cub3d MLX/libmlx42.a -ldl -lglfw -L /goinfre/nachab/homebrew/Cellar/glfw/3.3.8/lib/ -pthread -lm -framework Cocoa -framework OpenGL -framework IOKit
+NAME = cub3D
 
-# gcc MLX/libmlx42.a -ldl -lglfw -L/usr/local/opt/glfw/lib/ -pthread -lm -framework Cocoa -framework OpenGL -framework IOKit cub3d.c   -o cub3d
+CC = cc
 
-# https://drive.google.com/drive/folders/1soM5MsDYgPerIOHsscgKHIsD4lo3o4sX
+GLFW = $(shell brew --prefix glfw)
+
+FRAMEWORKS = /Users/nachab/Desktop/CUB3D_42/MLX/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
+
+FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+
+PARSE_SRC =  parsing/rgb_conversion.c parsing/get_file_data.c parsing/init_data.c parsing/store_data.c parsing/check_map_utils.c parsing/file_parser.c parsing/check_player.c
+
+GNL_SRC = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+
+LIBFT_SRC = libft/ft_strlen.c libft/ft_strncmp.c libft/ft_strchr.c libft/ft_calloc.c libft/ft_bzero.c libft/ft_strnstr.c libft/ft_atoi.c libft/ft_split.c
+
+ABD_SRC = mouve_mouse.c move_player.c raycasting_2.c raycasting.c tools.c draw_map.c cub3d.c
+
+OBJ = $(PARSE_SRC:.c=.o) $(GNL_SRC:cpp=.o) $(LIBFT_SRC:.c=.o) $(ABD_SRC:.c=.o)
+
+
+all: $(NAME) 
+
+$(NAME) : $(OBJ) $(LIBFT)
+	$(CC) $(FLAGS)  $^ $(FRAMEWORKS) -o $@
+
+
+%.o: %.cpp
+	$(CC) $(FLAGS)  -Imlx -c $< -o $@
+
+clean :
+	@find . -name "*.o" -type f -delete
+
+fclean : clean
+	@rm -rf $(NAME)
+
+re : fclean all

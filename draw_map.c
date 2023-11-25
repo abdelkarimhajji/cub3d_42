@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:21:24 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/09 14:09:08 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/25 13:47:33 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ void	draw_ceil_floor(t_cub3d *data)
 		while (i < WIDTH_WIN)
 		{
 			if (j < HEIGHT_WIN / 2)
-				mlx_put_pixel(data->img, i, j, 0x0000FF88);
+				mlx_put_pixel(data->img, i, j, data->textures.sky_hex);
 			else
-				mlx_put_pixel(data->img, i, j, 0x00FF0088);
+				mlx_put_pixel(data->img, i, j, data->textures.floor_hex);
 			i++;
 		}
 		j++;

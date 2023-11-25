@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:37:30 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/23 11:27:43 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/25 12:57:05 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,37 +28,31 @@ uint32_t    get_texel(mlx_image_t *img, int x, int y)
     return (red << 24 | green << 16 | blue << 8 | alpha);
 }
 
-void	ray_casting(t_cub3d *data, float ray_angle, int id_ray, int color)
+void	ray_casting(t_cub3d *data, float ray_angle, int id_ray, mlx_image_t *img)
 {
 	double	height_wall;
 	int		xstart;
 	int		ystart;
 	int		xend;
 	int		yend;
-
 	data->dist = data->dist * cos(to_rad(ray_angle) - to_rad(data->angle));
 	height_wall = ((data->size_shape) * HEIGHT_WIN) / data->dist;
 	xstart = id_ray;
 	xend = id_ray;
 	ystart = (HEIGHT_WIN / 2) - (height_wall / 2);
-	yend = (HEIGHT_WIN / 2) + (height_wall / 2);
-	if (ystart < 0)
-		ystart = 0;
-	if (yend > HEIGHT_WIN)
+	yend = ystart + height_wall;
+	if (yend >= HEIGHT_WIN)
 		yend = HEIGHT_WIN;
-	int x = data->presentTexture * data->brickwall->width;
-	int j = 0;
+	int x = data->presentTexture * img->width;
+	int j = ystart;
 	while (ystart < yend)
 	{
-		int y = ((float)j / (float)height_wall) * data->brickwall->height;
+		float y = (((float)ystart - (float)j) / (float)height_wall) * img->height;
 		if (ystart >= 0 && ystart < HEIGHT_WIN)
 		{
-			if (y < 128)
-				mlx_put_pixel(data->img,  xstart, (int)ystart, get_texel(data->brickwall, x, y));
-			else
-			printf("y == %d\n", y);
+			mlx_put_pixel(data->img,  xstart, (int)ystart, get_texel(img, x, y));
 		}
-		j++;
+		// j++;
 		ystart += 1;
 	}
 }
