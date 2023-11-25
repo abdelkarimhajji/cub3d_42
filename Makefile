@@ -6,7 +6,7 @@
 #    By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/25 17:00:59 by nachab            #+#    #+#              #
-#    Updated: 2023/11/25 17:01:00 by nachab           ###   ########.fr        #
+#    Updated: 2023/11/25 17:01:39 by nachab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ FRAMEWORKS = /Users/nachab/Desktop/CUB3D_42/MLX/libmlx42.a -Iinclude -lglfw -L $
 
 FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
-PARSE_SRC =  parsing/rgb_conversion.c parsing/get_file_data.c parsing/init_data.c parsing/store_data.c parsing/check_map_utils.c parsing/file_parser.c parsing/check_player.c
+PARSE_SRC =  parsing/rgb_conversion.c parsing/get_file_data.c parsing/init_data.c parsing/store_data.c parsing/check_map_utils.c parsing/check_map_utils2.c parsing/file_parser.c parsing/check_player.c
 
 GNL_SRC = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
