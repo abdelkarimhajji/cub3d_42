@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:37:30 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/28 14:56:18 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/28 15:13:49 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,7 @@ void	ray_casting(t_cub3d *data, float ray_angle, int id_ray, mlx_image_t *img)
 	{
 		float y = (((float)ystart - (float)j) / (float)height_wall) * img->height;
 		if (ystart >= 0 && ystart < HEIGHT_WIN)
-		{
 			mlx_put_pixel(data->img,  xstart, (int)ystart, get_texel(img, x, y));
-		}
-		// j++;
 		ystart += 1;
 	}
 }

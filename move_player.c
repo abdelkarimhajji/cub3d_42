@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:17:09 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/28 14:55:57 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/28 15:16:51 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	controle_angle(t_cub3d *data)
 		if (data->angle <= 0)
 			data->angle += 360;
 	}
+	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
+		exit(0);
+	
 }
 
 void	controle_player(t_cub3d *data)

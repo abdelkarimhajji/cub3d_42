@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/28 14:58:06 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/28 15:40:07 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define WIDTH_WIN 2000
 # define HEIGHT_WIN 900
 # define SPEED_ROTATE 1
-# define MOVE_STEP 2.2
-# define MOVE_STEP_V 2.6
+# define MOVE_STEP 1
+# define MOVE_STEP_V 3
 # define VIEW_ANGLE 60
 
 
@@ -100,7 +100,7 @@ void				draw_line_dda(t_cub3d *data, float x2, float y2,
 float				distance_between_points(float x1, float y1, float x2,
 						float y2);
 void				draw_map(t_cub3d *data, int mode);
-void				draw_VIEW_ANGLE(t_cub3d *data);
+void				draw_view_angle(t_cub3d *data);
 void				check_ray_draw(t_cub3d *data, float ray_angle, int id_ray);
 void	ray_casting(t_cub3d *data, float ray_angle, int id_ray, mlx_image_t *img);
 void				move_mouse(double xp, double yp, void *param);

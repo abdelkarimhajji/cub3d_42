@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:21:24 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/28 14:55:05 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/28 15:12:24 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	draw_map(t_cub3d *data, int mode)
 	}
 }
 
-void	draw_VIEW_ANGLE(t_cub3d *data)
+void	draw_view_angle(t_cub3d *data)
 {
 	int		i;
 	float	ray_angle;
