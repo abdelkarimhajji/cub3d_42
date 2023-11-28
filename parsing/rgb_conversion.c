@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_conversion.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:00:15 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/28 13:26:12 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/28 16:03:10 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ long	rgb_to_hex(char *line)
 		r = ft_atoi(values[0]);
 		g = ft_atoi(values[1]);
 		b = ft_atoi(values[2]);
+		free_split_array(values);
 		if ((r >= 0 && r <= 255) && (g >= 0 && g <= 255) && (b >= 0
 				&& b <= 255))
 		{
