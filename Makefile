@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+         #
+#    By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/25 17:00:59 by nachab            #+#    #+#              #
-#    Updated: 2023/11/27 13:33:37 by nachab           ###   ########.fr        #
+#    Updated: 2023/11/28 09:13:30 by ahajji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 GLFW = $(shell brew --prefix glfw)
 
-FRAMEWORKS = /Users/nachab/Desktop/CUB3D_42/MLX/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
+FRAMEWORKS = /Users/ahajji/Desktop/CUB3D_42/MLX/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
 
 FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
