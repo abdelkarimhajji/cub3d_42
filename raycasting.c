@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:37:30 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/25 17:18:12 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/28 14:56:18 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	check_ray_draw_down(t_cub3d *data, float ray_angle, int id_ray)
 	while (((int)(data->hores_inters_x / data->size_shape)) < data->width_map
 		&& ((int)(data->hores_inters_y / data->size_shape)) < data->height_map
 		&& data->hores_inters_x >= 0 && data->hores_inters_y >= 0
-		&& myMap[(int)(data->hores_inters_y
+		&& data->map[(int)(data->hores_inters_y
 			/ data->size_shape)][(int)(data->hores_inters_x
 			/ data->size_shape)] != '1')
 	{
@@ -97,7 +97,7 @@ void	check_ray_draw_up(t_cub3d *data, float ray_angle, int id_ray)
 		&& ((int)((data->hores_inters_y - 1)
 				/ data->size_shape)) < data->height_map
 		&& data->hores_inters_x >= 0 && data->hores_inters_y >= 0
-		&& myMap[(int)((data->hores_inters_y - 1)
+		&& data->map[(int)((data->hores_inters_y - 1)
 			/ data->size_shape)][(int)(data->hores_inters_x
 			/ data->size_shape)] != '1')
 	{
@@ -120,7 +120,7 @@ void	check_ray_draw_right(t_cub3d *data, float ray_angle, int id_ray)
 	while (((int)(data->vertcl_inters_x / data->size_shape)) < data->width_map
 		&& ((int)(data->vertcl_inters_y / data->size_shape)) < data->height_map
 		&& data->vertcl_inters_x >= 0 && data->vertcl_inters_y >= 0
-		&& myMap[(int)(data->vertcl_inters_y
+		&& data->map[(int)(data->vertcl_inters_y
 			/ data->size_shape)][(int)(data->vertcl_inters_x
 			/ data->size_shape)] != '1')
 	{
@@ -144,7 +144,7 @@ void	check_ray_draw_left(t_cub3d *data, float ray_angle, int id_ray)
 			/ data->size_shape)) < data->width_map
 		&& ((int)(data->vertcl_inters_y / data->size_shape)) < data->height_map
 		&& data->vertcl_inters_x >= 0 && data->vertcl_inters_y >= 0
-		&& myMap[(int)(data->vertcl_inters_y
+		&& data->map[(int)(data->vertcl_inters_y
 			/ data->size_shape)][(int)((data->vertcl_inters_x - 1)
 			/ data->size_shape)] != '1')
 	{

@@ -6,7 +6,7 @@
 #    By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/25 17:00:59 by nachab            #+#    #+#              #
-#    Updated: 2023/11/28 09:13:30 by ahajji           ###   ########.fr        #
+#    Updated: 2023/11/28 13:25:29 by ahajji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ PARSE_SRC =  parsing/rgb_conversion.c parsing/get_file_data.c parsing/init_data.
 
 GNL_SRC = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
-LIBFT_SRC = libft/ft_strlen.c libft/ft_strncmp.c libft/ft_strchr.c libft/ft_calloc.c libft/ft_bzero.c libft/ft_strnstr.c libft/ft_atoi.c libft/ft_split.c
+LIBFT_SRC = libft/ft_isdigit.c libft/ft_strlen.c libft/ft_strncmp.c libft/ft_strchr.c libft/ft_calloc.c libft/ft_bzero.c libft/ft_strnstr.c libft/ft_atoi.c libft/ft_split.c
 
 ABD_SRC = mouve_mouse.c move_player.c raycasting_2.c raycasting.c tools.c draw_map.c cub3d.c
 

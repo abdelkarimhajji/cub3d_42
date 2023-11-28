@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/27 13:12:55 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/28 14:58:06 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,11 @@
 
 # define WIDTH_WIN 2000
 # define HEIGHT_WIN 900
-# define SPEED_ROTATE 0.5
-# define MOVE_STEP 0.2
-# define MOVE_STEP_V 0.6
+# define SPEED_ROTATE 1
+# define MOVE_STEP 2.2
+# define MOVE_STEP_V 2.6
 # define VIEW_ANGLE 60
 
-static char			myMap[12][30] = {"111111111111111111111111111111",
-				"100000001010101000110001     1",
-				"100000010001001000100001     1",
-				"111110000100110101100001     1",
-				"1000001P0001010000000001     1",
-				"100000000111110000000001     1",
-				"100000100000000001111001     1",
-				"100000010000000000000001     1",
-				"100000001111110000011111     1",
-				"111111111111001110000001     1",
-				"1         00110001111111     1",
-				"                              "};
 
 typedef struct s_paths {
     char        *no_path;
@@ -136,6 +124,7 @@ void				call_raycasting(t_cub3d *data, float ray_angle, int id_ray);
 #define SUCCESS 1
 #define FAILURE -1
 
+int		ft_isdigit(int c);
 size_t	ft_strlen(const char *s);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_conversion.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:00:15 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/27 13:10:34 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/28 13:26:12 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
 
 char	*r_rgb_str(char *line)
 {
@@ -27,6 +28,28 @@ char	*r_rgb_str(char *line)
 	return (NULL);
 }
 
+void	check_rgb_str(char **str)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if (!ft_isdigit(str[i][j]) && str[i][j] != '\n')
+			{
+				printf("Please fix the rgb values\n");
+				exit (1);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 long	rgb_to_hex(char *line)
 {
 	char	**values;
@@ -36,6 +59,7 @@ long	rgb_to_hex(char *line)
 	int		b;
 
 	values = ft_split(line, ',');
+	check_rgb_str(values);
 	if (values && values[0] && values[1] && values[2])
 	{
 		r = ft_atoi(values[0]);
@@ -44,7 +68,7 @@ long	rgb_to_hex(char *line)
 		if ((r >= 0 && r <= 255) && (g >= 0 && g <= 255) && (b >= 0
 				&& b <= 255))
 		{
-			hex_val = ((long)r << 16) | ((long)g << 8) | (long)b;
+			hex_val = ((long)r << 24) | ((long)g << 16) | (long)b << 8 | (1 * 255);
 			return (hex_val);
 		}
 	}

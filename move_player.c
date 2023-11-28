@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:17:09 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/09 14:08:34 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/28 14:55:57 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ int	check_wall(t_cub3d *data)
 		x = data->px + cos(to_rad(90) - to_rad(data->angle)) * MOVE_STEP_V;
 		y = data->py - sin(to_rad(90) - to_rad(data->angle)) * MOVE_STEP_V;
 	}
-	if (myMap[(int)(y / data->size_shape)][(int)(x / data->size_shape)] == '1'
-		|| (myMap[(int)(y / data->size_shape)][(int)(data->px
-				/ data->size_shape)] == '1' && myMap[(int)(data->py
+	if (data->map[(int)(y / data->size_shape)][(int)(x / data->size_shape)] == '1'
+		|| (data->map[(int)(y / data->size_shape)][(int)(data->px
+				/ data->size_shape)] == '1' && data->map[(int)(data->py
 				/ data->size_shape)][(int)(x / data->size_shape)] == '1'))
 		return (0);
 	return (1);

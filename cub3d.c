@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/25 13:10:51 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/28 14:56:54 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 void	init_data(t_cub3d *data)
 {
-	data->width_map = 30;
-	data->height_map = 12;
 	data->angle = 270;
 	data->number_rays = WIDTH_WIN;
 	if (WIDTH_WIN / 9 > HEIGHT_WIN / 9)
