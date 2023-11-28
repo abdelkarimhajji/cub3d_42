@@ -6,44 +6,47 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:00:15 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/25 17:00:16 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/27 13:10:34 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char    *return_rgb_string(char *line)
+char	*r_rgb_str(char *line)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (line[i])
-    {
-        if (line[i] != 'F' && line[i] != 'C' && line[i] != ' ' && line[i] != '\t')
-            return (&line[i]);
-        i++;
-    }
-    return (NULL);
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != 'F' && line[i] != 'C' && line[i] != ' '
+			&& line[i] != '\t')
+			return (&line[i]);
+		i++;
+	}
+	return (NULL);
 }
 
-long    rgb_to_hex(char *line) 
+long	rgb_to_hex(char *line)
 {
-    char    **values;
-    int     r;
-    int     g;
-    int     b;
+	char	**values;
+	long	hex_val;
+	int		r;
+	int		g;
+	int		b;
 
-    values = ft_split(line, ',');
-    if (values && values[0] && values[1] && values[2])
-    {
-        r = ft_atoi(values[0]);
-        g = ft_atoi(values[1]);
-        b = ft_atoi(values[2]);
-        if ((r >= 0 && r <= 255) && (g >= 0 && g <= 255) && (b >= 0 && b <= 255))
-        {
-            long hex_val = ((long)r << 16) | ((long)g << 8) | (long)b;
-            return (hex_val);
-        }
-    }
-    return (-1);
+	values = ft_split(line, ',');
+	if (values && values[0] && values[1] && values[2])
+	{
+		r = ft_atoi(values[0]);
+		g = ft_atoi(values[1]);
+		b = ft_atoi(values[2]);
+		if ((r >= 0 && r <= 255) && (g >= 0 && g <= 255) && (b >= 0
+				&& b <= 255))
+		{
+			hex_val = ((long)r << 16) | ((long)g << 8) | (long)b;
+			return (hex_val);
+		}
+	}
+	return (-1);
 }

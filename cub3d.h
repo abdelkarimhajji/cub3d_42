@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/25 13:45:21 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/27 13:12:55 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,8 @@ char	*ft_strchr(const char *s, int c);
 char	*get_next_line(int fd);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char	*remove_newline(char *str);
+
 
 // void    init_struct(t_game_data *game_data);
 void    init_textures(mlx_t *mlx, t_cub3d *data);
@@ -156,12 +158,13 @@ int     check_if_map_line(char *line);
 void    parse_file_content(t_cub3d *data);
 int     store_map(t_cub3d *data, int index);
 
+int		check_which_texture(t_cub3d *data, int i, char *direction);
 int     check_path_rgb(t_cub3d *data);
 void    check_map(t_cub3d *data);
 void    init_game(char *path_file, t_cub3d *data);
 
 
-char    	*return_rgb_string(char *line);
+char		*r_rgb_str(char *line);
 long    	rgb_to_hex(char *line);
 uint32_t    get_texel(mlx_image_t *img, int x, int y);
 
