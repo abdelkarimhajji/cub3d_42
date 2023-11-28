@@ -16,7 +16,7 @@ CC = cc
 
 GLFW = $(shell brew --prefix glfw)
 
-FRAMEWORKS = /Users/nachab/Desktop/CUB3D_42/MLX/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
+FRAMEWORKS = /Users/ahajji/Desktop/CUB3D_42/MLX/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
 
 FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
