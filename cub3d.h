@@ -65,13 +65,13 @@ typedef struct s_player {
 
 typedef struct s_cub3d
 {
-	// Nassim stuff
+	// Nassim stuff //
 	char        	**file_content;
     char        	**map;
 	t_paths			paths;
 	t_textures  	textures;
     t_player    	player;
-	// Abdlkrim stuff
+	// Abdlkrim stuff //
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	mlx_image_t		*img_map;
