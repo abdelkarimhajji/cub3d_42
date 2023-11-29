@@ -6,7 +6,7 @@
 #    By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/25 17:00:59 by nachab            #+#    #+#              #
-#    Updated: 2023/11/29 13:15:52 by ahajji           ###   ########.fr        #
+#    Updated: 2023/11/29 15:05:51 by ahajji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ GLFW = $(shell brew --prefix glfw)
 
 FRAMEWORKS = /Users/ahajji/Desktop/MLX/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
 
-FLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 
 PARSE_SRC =  parsing/texel.c parsing/free_ressources.c parsing/rgb_conversion.c parsing/get_file_data.c parsing/init_data.c parsing/store_data.c parsing/check_map_utils.c parsing/check_map_utils2.c parsing/file_parser.c parsing/check_player.c parsing/store_data_utils.c
 
@@ -33,6 +33,8 @@ OBJ = $(PARSE_SRC:.c=.o) $(GNL_SRC:cpp=.o) $(LIBFT_SRC:.c=.o) $(ABD_SRC:.c=.o)
 
 all: $(NAME) 
 
+bonus: all
+ 
 $(NAME) : $(OBJ) $(LIBFT)
 	$(CC) $(FLAGS) $^ $(FRAMEWORKS) -o $@
 

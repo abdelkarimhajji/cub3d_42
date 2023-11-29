@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/29 13:18:58 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/29 15:03:30 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ char				*ft_strnstr(const char *haystack, const char *needle,
 char				*remove_newline(char *str);
 void				free_2dchar_array(char **arr);
 void				free_cub_data(t_cub3d *data);
+void				close_callback(void *param);
 
 // void    init_struct(t_game_data *game_data);
 void				init_textures(mlx_t *mlx, t_cub3d *data);

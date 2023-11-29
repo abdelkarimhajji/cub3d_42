@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/29 13:31:10 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/29 14:58:51 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int	main(int ac, char **av)
 	t_cub3d	data;
 
 	if (ac != 2)
-		return (printf("Please provide a map file with .cub \
-			extenstion in the maps directory"), EXIT_FAILURE);
+		return (printf("Please provide a map file with .cub"),
+			printf(" extenstion in the maps directory\n"), EXIT_FAILURE);
 	init_game(av[1], &data);
 	data.mlx = mlx_init(WIDTH_WIN, HEIGHT_WIN, "cub3d", false);
 	if (!data.mlx)
@@ -84,6 +84,7 @@ int	main(int ac, char **av)
 		return (1);
 	draw_map(&data, 1);
 	mlx_loop_hook(data.mlx, draw, &data);
+	mlx_close_hook(data.mlx, close_callback, NULL);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
 	free_cub_data(&data);

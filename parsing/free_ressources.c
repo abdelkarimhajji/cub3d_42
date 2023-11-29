@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_ressources.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:47:32 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/29 12:20:26 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/29 15:04:00 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,9 @@ void	free_cub_data(t_cub3d *data)
 	free_2dchar_array(data->file_content);
 	free(data->map);
 	free_images(data);
+}
+
+void	close_callback(void *param)
+{
+	exit(0);
 }
