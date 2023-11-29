@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/28 15:59:30 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/29 12:20:43 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,8 @@ char	*get_next_line(int fd);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*remove_newline(char *str);
-void    free_split_array(char **arr);
+void	free_2dchar_array(char **arr);
+void	free_cub_data(t_cub3d *data);
 
 
 // void    init_struct(t_game_data *game_data);

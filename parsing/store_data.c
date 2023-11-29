@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:00:18 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/29 12:10:42 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/29 12:22:18 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ int	store_textures_path(t_cub3d *data, int length)
 
 void	init_textures(mlx_t *mlx, t_cub3d *data)
 {
-	static mlx_texture_t	*no_texture;
-	static mlx_texture_t	*so_texture;
-	static mlx_texture_t	*ea_texture;
-	static mlx_texture_t	*we_texture;
+	mlx_texture_t	*no_texture;
+	mlx_texture_t	*so_texture;
+	mlx_texture_t	*ea_texture;
+	mlx_texture_t	*we_texture;
 
 	no_texture = mlx_load_png(data->paths.no_path);
 	so_texture = mlx_load_png(data->paths.so_path);
@@ -75,6 +75,10 @@ void	init_textures(mlx_t *mlx, t_cub3d *data)
 	data->textures.so_texture = mlx_texture_to_image(mlx, so_texture);
 	data->textures.ea_texture = mlx_texture_to_image(mlx, ea_texture);
 	data->textures.we_texture = mlx_texture_to_image(mlx, we_texture);
+	mlx_delete_texture(no_texture);
+	mlx_delete_texture(so_texture);
+	mlx_delete_texture(ea_texture);
+	mlx_delete_texture(we_texture);
 }
 
 int	map_length(t_cub3d *data, int index)

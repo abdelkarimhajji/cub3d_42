@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/29 12:09:30 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/29 12:20:57 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ void	draw(void *param)
 		mlx_loop_hook(data.mlx, draw, &data);
 		mlx_loop(data.mlx);
 		mlx_terminate(data.mlx);
+		free_cub_data(&data);
 		return (0);
 	}

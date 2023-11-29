@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:43 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/28 16:01:41 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/29 12:21:57 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,4 @@ void	init_game(char *path_file, t_cub3d *data)
 	check_dimensions(data);
 	check_walls(data);
 	check_valid_path(data);
-	// free_split_array(data->file_content);
 }
