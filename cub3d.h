@@ -6,14 +6,14 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/29 12:58:44 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/29 13:18:58 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "./MLX/MLX42.h"
+# include "../MLX/MLX42.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <math.h>

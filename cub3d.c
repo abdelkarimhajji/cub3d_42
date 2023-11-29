@@ -6,12 +6,11 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/29 12:42:38 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/29 13:31:10 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "MLX/MLX42.h"
 
 void	init_data(t_cub3d *data)
 {
@@ -71,7 +70,7 @@ int	main(int ac, char **av)
 		return (printf("Please provide a map file with .cub \
 			extenstion in the maps directory"), EXIT_FAILURE);
 	init_game(av[1], &data);
-	data.mlx = mlx_init(WIDTH_WIN, HEIGHT_WIN, "cub3d", true);
+	data.mlx = mlx_init(WIDTH_WIN, HEIGHT_WIN, "cub3d", false);
 	if (!data.mlx)
 		return (1);
 	init_textures(data.mlx, &data);
