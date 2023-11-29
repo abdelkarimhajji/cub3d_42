@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:41 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/27 12:57:41 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/28 16:00:57 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,20 @@
 
 int	lines_in_file(char *path)
 {
-	int	fd;
-	int	lines;
+	int		fd;
+	char	*line;
+	int		lines;
 
 	fd = open(path, O_RDONLY);
 	lines = 0;
 	if (fd < 0)
 		return (0);
-	while (get_next_line(fd) != NULL)
+	line = get_next_line(fd);
+	while (line)
 	{
 		lines++;
+		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (lines);

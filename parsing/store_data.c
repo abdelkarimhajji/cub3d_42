@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   store_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:00:18 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/28 15:11:44 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/29 12:22:18 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,10 @@ void	init_textures(mlx_t *mlx, t_cub3d *data)
 	data->textures.so_texture = mlx_texture_to_image(mlx, so_texture);
 	data->textures.ea_texture = mlx_texture_to_image(mlx, ea_texture);
 	data->textures.we_texture = mlx_texture_to_image(mlx, we_texture);
+	mlx_delete_texture(no_texture);
+	mlx_delete_texture(so_texture);
+	mlx_delete_texture(ea_texture);
+	mlx_delete_texture(we_texture);
 }
 
 int	map_length(t_cub3d *data, int index)

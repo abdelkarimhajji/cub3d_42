@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/28 15:12:24 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/29 12:36:40 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,8 @@ void	draw(void *param)
 		t_cub3d	data;
 
 		if (ac != 2)
-		{
-			printf("Please provide a map file with .cub extenstion in the maps directory");
-			return (EXIT_FAILURE);
-		}
+			return (printf("Please provide a map file with .cub \
+				extenstion in the maps directory"), EXIT_FAILURE);
 		init_game(av[1], &data);
 		data.mlx = mlx_init(WIDTH_WIN, HEIGHT_WIN, "cub3d", true);
 		if (!data.mlx)
@@ -90,5 +88,6 @@ void	draw(void *param)
 		mlx_loop_hook(data.mlx, draw, &data);
 		mlx_loop(data.mlx);
 		mlx_terminate(data.mlx);
+		free_cub_data(&data);
 		return (0);
 	}
