@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:29:06 by W2Wizard          #+#    #+#             */
-/*   Updated: 2023/11/02 11:40:40 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/29 15:21:22 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
  * all the bells and whistles in the "engine". Most user's have no need
  * for the inner workings eitherway (shaders, vertex buffer, ...).  
  */
-
+      
 #ifndef MLX42_H
 # define MLX42_H
 # include <stddef.h>
