@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:37:30 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/28 15:13:49 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/29 12:34:55 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-uint32_t    get_texel(mlx_image_t *img, int x, int y)
-{
-    uint8_t *pixel;
-    uint8_t alpha;
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
-
-    pixel = &img->pixels[((y * img->width) + x) * 4];
-    red = pixel[0];
-    green = pixel[1];
-    blue = pixel[2];
-    alpha = pixel[3];
-    return (red << 24 | green << 16 | blue << 8 | alpha);
-}
 
 void	ray_casting(t_cub3d *data, float ray_angle, int id_ray, mlx_image_t *img)
 {
