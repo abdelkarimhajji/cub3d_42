@@ -3,39 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:37:30 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/29 12:34:55 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/29 12:56:25 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ray_casting(t_cub3d *data, float ray_angle, int id_ray, mlx_image_t *img)
+void	ray_casting(t_cub3d *data, float ray_angle,
+	int id_ray, mlx_image_t *img)
 {
 	double	height_wall;
 	int		xstart;
 	int		ystart;
 	int		xend;
 	int		yend;
+
 	data->dist = data->dist * cos(to_rad(ray_angle) - to_rad(data->angle));
 	height_wall = ((data->size_shape) * HEIGHT_WIN) / data->dist;
 	xstart = id_ray;
 	xend = id_ray;
 	ystart = (HEIGHT_WIN / 2) - (height_wall / 2);
 	yend = (HEIGHT_WIN / 2) + (height_wall / 2);
-	// if (ystart < 0)
-	// 	ystart = 0;
 	if (yend > HEIGHT_WIN)
 		yend = HEIGHT_WIN;
-	int x = data->presentTexture * img->width;
-	int j = ystart;
+	data->texture_offset_x = data->present_texture * img->width;
+	data->wall_start = ystart;
 	while (ystart < yend)
 	{
-		float y = (((float)ystart - (float)j) / (float)height_wall) * img->height;
+		data->texture_offset_y = (((float)ystart - (float)data->wall_start)
+				/ (float)height_wall) * img->height;
 		if (ystart >= 0 && ystart < HEIGHT_WIN)
-			mlx_put_pixel(data->img,  xstart, (int)ystart, get_texel(img, x, y));
+			mlx_put_pixel(data->img, xstart, (int)ystart,
+				get_texel(img, data->texture_offset_x, data->texture_offset_y));
 		ystart += 1;
 	}
 }

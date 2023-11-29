@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/29 12:36:40 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/29 12:42:38 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,31 +63,30 @@ void	draw(void *param)
 	mlx_put_pixel(data->img, data->px, data->py, 0xFF0000FF);
 }
 
+int	main(int ac, char **av)
+{
+	t_cub3d	data;
 
-	int	main(int ac, char **av)
-	{
-		t_cub3d	data;
-
-		if (ac != 2)
-			return (printf("Please provide a map file with .cub \
-				extenstion in the maps directory"), EXIT_FAILURE);
-		init_game(av[1], &data);
-		data.mlx = mlx_init(WIDTH_WIN, HEIGHT_WIN, "cub3d", true);
-		if (!data.mlx)
-			return (1);
-		init_textures(data.mlx, &data);
-		init_data(&data);
-		data.img_map = mlx_new_image(data.mlx, data.size_map, data.size_map);
-		data.img = mlx_new_image(data.mlx, WIDTH_WIN, HEIGHT_WIN);
-		if (!data.img || (mlx_image_to_window(data.mlx, data.img, 0, 0)))
-			return (1);
-		(mlx_image_to_window(data.mlx, data.img_map, 0, 0));
-		if (!data.img_map)
-			return (1);
-		draw_map(&data, 1);
-		mlx_loop_hook(data.mlx, draw, &data);
-		mlx_loop(data.mlx);
-		mlx_terminate(data.mlx);
-		free_cub_data(&data);
-		return (0);
-	}
+	if (ac != 2)
+		return (printf("Please provide a map file with .cub \
+			extenstion in the maps directory"), EXIT_FAILURE);
+	init_game(av[1], &data);
+	data.mlx = mlx_init(WIDTH_WIN, HEIGHT_WIN, "cub3d", true);
+	if (!data.mlx)
+		return (1);
+	init_textures(data.mlx, &data);
+	init_data(&data);
+	data.img_map = mlx_new_image(data.mlx, data.size_map, data.size_map);
+	data.img = mlx_new_image(data.mlx, WIDTH_WIN, HEIGHT_WIN);
+	if (!data.img || (mlx_image_to_window(data.mlx, data.img, 0, 0)))
+		return (1);
+	(mlx_image_to_window(data.mlx, data.img_map, 0, 0));
+	if (!data.img_map)
+		return (1);
+	draw_map(&data, 1);
+	mlx_loop_hook(data.mlx, draw, &data);
+	mlx_loop(data.mlx);
+	mlx_terminate(data.mlx);
+	free_cub_data(&data);
+	return (0);
+}
