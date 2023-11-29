@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:21:24 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/25 13:47:33 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/28 15:12:24 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ void	draw_rectangle(int x, int y, t_cub3d *data, uint32_t color)
 
 void	draw_map_2(t_cub3d *data, int mode, int i, int j)
 {
-	if (myMap[j][i] == '1')
+	if (data->map[j][i] == '1')
 		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
 			0xFFFFFFFF);
-	if (myMap[j][i] == '0' || (mode == 0 && myMap[j][i] == 'P'))
+	if (data->map[j][i] == '0' || (mode == 0 && data->map[j][i] == 'N'))
 		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
 			0x000000FF);
-	if (myMap[j][i] == ' ')
+	if (data->map[j][i] == ' ')
 		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
 			0xFF000033);
-	if (myMap[j][i] == 'P' && mode)
+	if (data->map[j][i] == 'N' && mode)
 	{
 		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
 			0x000000FF);
@@ -70,7 +70,7 @@ void	draw_map(t_cub3d *data, int mode)
 	}
 }
 
-void	draw_VIEW_ANGLE(t_cub3d *data)
+void	draw_view_angle(t_cub3d *data)
 {
 	int		i;
 	float	ray_angle;
