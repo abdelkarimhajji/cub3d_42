@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+         #
+#    By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/25 17:00:59 by nachab            #+#    #+#              #
-#    Updated: 2023/11/29 15:05:51 by ahajji           ###   ########.fr        #
+#    Updated: 2023/11/30 12:46:59 by nachab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 GLFW = $(shell brew --prefix glfw)
 
-FRAMEWORKS = /Users/ahajji/Desktop/MLX/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
+FRAMEWORKS = /Users/nachab/Desktop/MLX/libmlx42.a -Iinclude -lglfw -L $(GLFW)/lib/ -framework Cocoa -framework OpenGL -framework IOKit
 
 FLAGS = -Wall -Wextra -Werror
 

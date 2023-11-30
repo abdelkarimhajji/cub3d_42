@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 13:34:51 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/29 12:23:09 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/30 13:46:13 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int	check_which_texture(t_cub3d *data, int i, char *direction)
 {
 	if (ft_strnstr(data->file_content[i], 
 			direction, ft_strlen(data->file_content[i])))
+	{
+		valid_texture_line(data->file_content[i], direction);
 		return (1);
+	}
 	return (0);
 }
