@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:21:24 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/28 15:12:24 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/30 14:49:23 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	draw_map_2(t_cub3d *data, int mode, int i, int j)
 	{
 		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
 			0x000000FF);
-		mlx_put_pixel(data->img, data->px = (i * data->size_shape) + 13,
-			data->py = (j * data->size_shape) + 13, 0xFF0000FF);
+		mlx_put_pixel(data->img, data->px = (i * data->size_shape) + (data->size_shape / 2),
+			data->py = (j * data->size_shape) + (data->size_shape / 2), 0xFF0000FF);
 	}
 }
 

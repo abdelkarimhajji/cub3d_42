@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/29 14:58:51 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/30 14:56:52 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 void	init_data(t_cub3d *data)
 {
-	data->angle = 270;
+	if(data->player.direction == 'N')
+		data->angle = 270;
+	else if(data->player.direction == 'S')
+		data->angle = 90;
+	else if(data->player.direction == 'W')
+		data->angle = 180;
+	else
+		data->angle = 0;
 	data->number_rays = WIDTH_WIN;
 	if (WIDTH_WIN / 9 > HEIGHT_WIN / 9)
 		data->size_map = WIDTH_WIN / 9;
