@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:29 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/25 16:59:30 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/30 15:08:35 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	get_player_pos(t_cub3d *data)
 			if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
 				|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
 			{
+				data->map[i][j] = 'P';
 				data->player.direction = data->map[i][j];
 				data->player.i = i;
 				data->player.j = j;
