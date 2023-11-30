@@ -6,38 +6,11 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:24 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/29 12:22:58 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/30 13:50:15 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	check_walls(t_cub3d *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->map[i])
-	{
-		j = 0;
-		while (data->map[i][j] && data->map[i][j] != '\n')
-		{
-			if (i == 0 || data->map[i + 1] == NULL)
-			{
-				if (data->map[i][j] != '1')
-					exit(1);
-			}
-			else if (j == 0 || data->map[i][j + 1] == '\n')
-			{
-				if (data->map[i][j] != '1')
-					exit(1);
-			}
-			j++;
-		}
-		i++;
-	}
-}
 
 size_t	get_index(char *line, char *needle)
 {
@@ -103,6 +76,34 @@ void	check_valid_path(t_cub3d *data)
 			}
 			j++;
 		}
+		i++;
+	}
+}
+
+void	valid_texture_line(char *str, char *needle)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_strncmp(&str[i], needle, ft_strlen(needle)) == 0)
+		{
+			i += 2;
+			break ;
+		}
+		else if (str[i] != ' ' && str[i] != '\t')
+			exit (1);
+		i++;
+	}
+	while (str[i])
+	{
+		if (ft_strncmp(&str[i], "textures", ft_strlen("textures")) == 0 
+			|| ft_strncmp(&str[i], "./textures", ft_strlen("./textures")) == 0 
+			|| ft_strncmp(&str[i], ".textures", ft_strlen(".textures")) == 0)
+			return ;
+		else if (str[i] != ' ' && str[i] != '\t')
+			exit (1);
 		i++;
 	}
 }

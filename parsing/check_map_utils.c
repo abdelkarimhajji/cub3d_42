@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:27 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/28 14:52:15 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/30 13:47:31 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,23 @@ void	check_dimensions(t_cub3d *data)
 {
 	int	i;
 	int	j;
+	int	highest;
 
 	i = 0;
+	highest = 0;
 	while (data->map[i])
 	{
 		j = 0;
 		while (data->map[i][j] && data->map[i][j] != '\n')
 			j++;
 		if (j > 30)
-		{
-			printf("Column width surpassed (max 30)\n");
 			exit(1);
-		}
 		i++;
+		if (j > highest)
+			highest = j;
 	}
 	if (i > 30)
-	{
-		printf("Row height surpassed (max 20)");
 		exit(1);
-	}
 	data->height_map = i;
 	data->width_map = j;
 }

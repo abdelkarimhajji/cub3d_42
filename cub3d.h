@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/29 15:03:30 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/30 13:47:10 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ int					check_if_map_line(char *line);
 void				parse_file_content(t_cub3d *data);
 int					store_map(t_cub3d *data, int index);
 
+void				valid_texture_line(char *str, char *needle);
 int					check_which_texture(t_cub3d *data, int i, char *direction);
 int					check_path_rgb(t_cub3d *data);
 void				check_map(t_cub3d *data);
@@ -165,7 +166,6 @@ uint32_t			get_texel(mlx_image_t *img, int x, int y);
 void				duplicate_player(t_cub3d *data);
 void				get_player_pos(t_cub3d *data);
 void				check_dimensions(t_cub3d *data);
-void				check_walls(t_cub3d *data);
 void				check_valid_path(t_cub3d *data);
 
 #endif

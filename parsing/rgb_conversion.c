@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:00:15 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/29 12:15:25 by nachab           ###   ########.fr       */
+/*   Updated: 2023/11/30 12:48:57 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,16 @@ void	check_rgb_str(char **str)
 	}
 }
 
+int	nb_rgb_elem(char **line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+		i++;
+	return (i);
+}
+
 long	rgb_to_hex(char *line)
 {
 	char	**values;
@@ -58,6 +68,8 @@ long	rgb_to_hex(char *line)
 	int		b;
 
 	values = ft_split(line, ',');
+	if (nb_rgb_elem(values) > 3)
+		exit(1);
 	check_rgb_str(values);
 	if (values && values[0] && values[1] && values[2])
 	{
