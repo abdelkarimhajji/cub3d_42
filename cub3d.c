@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/30 15:02:41 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/30 15:17:56 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_data(t_cub3d *data)
 {
+	data->map[data->player.i][data->player.j] = 'P';
 	if (data->player.direction == 'N')
 		data->angle = 270;
 	else if (data->player.direction == 'S')

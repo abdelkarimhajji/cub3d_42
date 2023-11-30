@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:21:24 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/30 15:03:37 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/11/30 15:13:25 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	draw_map_2(t_cub3d *data, int mode, int i, int j)
 	if (data->map[j][i] == '1')
 		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
 			0xFFFFFFFF);
-	if (data->map[j][i] == '0' || (mode == 0 && data->map[j][i] == 'N'))
+	if (data->map[j][i] == '0' || (mode == 0 && data->map[j][i] == 'P'))
 		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
 			0x000000FF);
 	if (data->map[j][i] == ' ')
 		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
 			0xFF000033);
-	if (data->map[j][i] == 'N' && mode)
+	if (data->map[j][i] == 'P' && mode)
 	{
 		draw_rectangle(i * data->size_shape, j * data->size_shape, data,
 			0x000000FF);
