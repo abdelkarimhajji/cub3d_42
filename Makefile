@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+         #
+#    By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/25 17:00:59 by nachab            #+#    #+#              #
-#    Updated: 2023/11/30 14:47:54 by ahajji           ###   ########.fr        #
+#    Updated: 2023/12/01 11:06:00 by nachab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ $(NAME) : $(OBJ) $(LIBFT)
 	$(CC) $(FLAGS) $^ $(FRAMEWORKS) -o $@
 
 
-%.o: %.cpp
+%.o: %.c
 	$(CC) $(FLAGS)  -Imlx -c $< -o $@
 
 clean :
