@@ -25,58 +25,27 @@ size_t	get_index(char *line, char *needle)
 	return (i);
 }
 
-int	check_cells(t_cub3d *data, int i, int j)
+void	check_valid_path(t_game_data *game, int y, int x)
 {
-	if ((data->map[i][j + 1] != '0' && data->map[i][j
-		+ 1] != data->player.direction && data->map[i][j + 1] != '1'))
+    if (game->tmp[y][x] == ' ' || (game->tmp[y][x] == '0' && y == 0) 
+        || (game->tmp[y][x] == '0' && game->tmp[y + 1] == NULL) || (game->tmp[y][x] == '0' && x == 0) 
+        || (game->tmp[y][x] == '0' && (game->tmp[y][x + 1] == '\n' || game->tmp[y][x + 1] == '\0')))
+    {
+        printf("Map path isn't valid\n");
+        exit (1);
+    }
+	else if (game->tmp[y][x] == 'V' || game->tmp[y][x] == '1')
+		return ;
+	else if (game->tmp[y][x] == game->player.direction || game->tmp[y][x] == '0')
 	{
-		return (1);
-	}
-	else if ((data->map[i][j - 1] != '0' && data->map[i][j
-		- 1] != data->player.direction && data->map[i][j - 1] != '1'))
-	{
-		return (1);
-	}
-	else if ((data->map[i + 1][j] != '0' && data->map[i
-			+ 1][j] != data->player.direction && data->map[i + 1][j] != '1')
-			|| get_index(data->map[i], &data->map[i][j]) > ft_strlen(data->map[i
-			+ 1]))
-	{
-		return (1);
-	}
-	else if ((data->map[i - 1][j] != '0' && data->map[i
-			- 1][j] != data->player.direction && data->map[i - 1][j] != '1')
-			|| get_index(data->map[i], &data->map[i][j]) > ft_strlen(data->map[i
-				- 1]))
-	{
-		return (1);
-	}
-	return (0);
-}
-
-void	check_valid_path(t_cub3d *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->map[i])
-	{
-		j = 0;
-		while (data->map[i][j] && data->map[i][j] != '\n')
-		{
-			if ((i > 0 && j > 0) && (data->map[i][j] == data->player.direction
-				|| data->map[i][j] == '0') && (data->map[i + 1] != NULL))
-			{
-				if (check_cells(data, i, j) == 1)
-				{
-					printf("Map path isn't valid\n");
-					exit(1);
-				}
-			}
-			j++;
-		}
-		i++;
+		game->tmp[y][x] = 'V';
+		check_valid_path(game, y, x + 1);
+        if (x > 0)
+            check_valid_path(game, y, x - 1);
+        if (game->tmp[y + 1] != NULL)
+            check_valid_path(game, y + 1, x);
+        if (y > 0)
+            check_valid_path(game, y - 1, x);
 	}
 }
 

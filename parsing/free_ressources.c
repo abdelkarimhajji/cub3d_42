@@ -39,6 +39,7 @@ void	free_cub_data(t_cub3d *data)
 {
 	free_2dchar_array(data->file_content);
 	free(data->map);
+	free(data->tmp);
 	free_images(data);
 }
 
