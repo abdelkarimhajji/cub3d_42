@@ -57,6 +57,7 @@ typedef struct s_cub3d
 {
 	char			**file_content;
 	char			**map;
+	char			**tmp;
 	t_paths			paths;
 	t_textures		textures;
 	t_player		player;
@@ -166,6 +167,6 @@ uint32_t			get_texel(mlx_image_t *img, int x, int y);
 void				duplicate_player(t_cub3d *data);
 void				get_player_pos(t_cub3d *data);
 void				check_dimensions(t_cub3d *data);
-void				check_valid_path(t_cub3d *data);
+void				check_valid_path(t_cub3d *data, int y, int x);
 
 #endif
