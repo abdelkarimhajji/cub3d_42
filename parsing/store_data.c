@@ -106,8 +106,8 @@ int	store_map(t_cub3d *data, int index)
 	data->tmp = malloc((map_length(data, index) + 1) * sizeof(char *));
 	while (data->file_content[index] != NULL)
 	{
-		data->map[i] = data->file_content[index];
-		data->tmp[i] = data->file_content[index];
+		data->map[i] = ft_strdup(data->file_content[index]);
+		data->tmp[i] = ft_strdup(data->file_content[index]);
 		i++;
 		index++;
 	}
