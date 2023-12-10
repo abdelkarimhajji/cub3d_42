@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:17:09 by ahajji            #+#    #+#             */
-/*   Updated: 2023/12/10 15:05:00 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/10 15:30:42 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	check_wall_part_tow(t_cub3d *data, int *x, int *y)
 	if (mlx_is_key_down(data->mlx, MLX_KEY_W))
 	{
 		coutn++;
-		printf("i work %d\n", coutn);
 		*x = data->px + (cos(to_rad(data->angle)) * MOVE_STEP_V);
 		*y = data->py + (sin(to_rad(data->angle)) * MOVE_STEP_V);
 	}

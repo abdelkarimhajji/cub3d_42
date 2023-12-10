@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/12/10 13:09:44 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/10 15:57:34 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	draw(void *param)
 	draw_ceil_floor(data);
 	draw_map(data, 0);
 	draw_view_angle(data);
-	mlx_put_pixel(data->img, data->px, data->py, 0xFF0000FF);
+	draw_player(data);
 }
 
 int	main(int ac, char **av)
