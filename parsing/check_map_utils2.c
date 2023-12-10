@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:24 by nachab            #+#    #+#             */
-/*   Updated: 2023/12/10 17:25:17 by nachab           ###   ########.fr       */
+/*   Updated: 2023/12/10 17:32:05 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	valid_cell_path(t_cub3d *game, int y, int x)
 	length = line_length(game->tmp[y], &game->tmp[y][x]);
 	if (y > 0 && length > ft_strlen(game->tmp[y - 1]))
 		return (1);
-	else if (game->tmp[y + 1] && length > ft_strlen(game->tmp[y - 1]))
+	else if (game->tmp[y + 1] && length > ft_strlen(game->tmp[y + 1]))
 		return (1);
 	return (0);
 }

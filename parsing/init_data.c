@@ -3,14 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:43 by nachab            #+#    #+#             */
-/*   Updated: 2023/12/10 12:54:53 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/10 17:32:16 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	check_walls(t_cub3d *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (data->map[i])
+	{
+		j = 0;
+		while (data->map[i][j] && data->map[i][j] != '\n')
+		{
+			if (i == 0 || data->map[i + 1] == NULL)
+			{
+				if (data->map[i][j] != '1' && data->map[i][j] != ' ')
+					exit(1);
+			}
+			else if (j == 0 || data->map[i][j + 1] == '\n')
+			{
+				if (data->map[i][j] != '1' && data->map[i][j] != ' ')
+					exit(1);
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 void	init_struct(t_cub3d *game_data)
 {
@@ -57,5 +84,6 @@ void	init_game(char *path_file, t_cub3d *data)
 	duplicate_player(data);
 	get_player_pos(data);
 	check_dimensions(data);
+	check_walls(data);
 	check_valid_path(data, data->player.i, data->player.j);
 }
