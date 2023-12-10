@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:32:35 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/29 12:57:26 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/10 15:51:01 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	call_raycasting(t_cub3d *data, float ray_angle, int id_ray)
 			ray_casting(data, ray_angle, id_ray, data->textures.so_texture);
 		data->present_texture = (data->hores_inters_x / data->size_shape)
 			- ((int)(data->hores_inters_x / data->size_shape));
-		draw_line_dda(data, data->hores_inters_x, data->hores_inters_y,
-			0xFF0000FF);
+		// draw_line_dda(data, data->hores_inters_x, data->hores_inters_y,
+		// 	0xFF0000FF);
 	}
 	else
 	{
@@ -35,7 +35,7 @@ void	call_raycasting(t_cub3d *data, float ray_angle, int id_ray)
 			ray_casting(data, ray_angle, id_ray, data->textures.we_texture);
 		data->present_texture = (data->vertcl_inters_y / data->size_shape)
 			- ((int)(data->vertcl_inters_y / data->size_shape));
-		draw_line_dda(data, data->vertcl_inters_x, data->vertcl_inters_y,
-			0xFF0000FF);
+		// draw_line_dda(data, data->vertcl_inters_x, data->vertcl_inters_y,
+		// 	0xFF0000FF);
 	}
 }

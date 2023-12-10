@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   draw_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 15:52:12 by nachab            #+#    #+#             */
-/*   Updated: 2023/12/10 14:40:53 by ahajji           ###   ########.fr       */
+/*   Created: 2023/12/10 15:56:23 by ahajji            #+#    #+#             */
+/*   Updated: 2023/12/10 15:57:11 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
 
-# include <stdlib.h>
-# include <unistd.h>
-//# include <fcntl.h>
+#include "cub3d.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
-char	*get_next_line(int fd);
-char	*get_newline(char *buffer);
-char	*trim_container(char *buffer);
-char	*ft_strdupp(const char *s);
-char	*ft_strjoin(char *s1, char *s2);
-size_t	ft_strlen(const char *s);
-int		newline_index(char *s);
-
-#endif
+void    draw_player(t_cub3d *data)
+{
+    int i = data->py - 1;
+	int j = 0;
+	
+	while (i < data->py + 1)
+	{
+		j = data->px - 1;
+		while (j < data->px + 1)
+		{
+			mlx_put_pixel(data->img_map, j, i, 0xFF0000FF);
+			j++;
+		}
+		i++;
+	}
+}

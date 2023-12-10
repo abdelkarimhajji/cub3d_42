@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/12/10 13:58:59 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/10 15:57:50 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define HEIGHT_WIN 900
 # define SPEED_ROTATE 2
 # define MOVE_STEP 1
-# define MOVE_STEP_V 5
+# define MOVE_STEP_V 3
 # define VIEW_ANGLE 60
 
 typedef struct s_paths
@@ -120,6 +120,7 @@ void				check_ray_draw_up(t_cub3d *data, float ray_angle);
 void				check_ray_draw_right(t_cub3d *data, float ray_angle);
 void				check_ray_draw_left(t_cub3d *data, float ray_angle);
 void				call_raycasting(t_cub3d *data, float ray_angle, int id_ray);
+void				draw_player(t_cub3d *data);
 
 # define SUCCESS 1
 # define FAILURE -1
