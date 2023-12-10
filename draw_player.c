@@ -6,18 +6,19 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 15:56:23 by ahajji            #+#    #+#             */
-/*   Updated: 2023/12/10 15:57:11 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/10 17:39:56 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "cub3d.h"
 
-void    draw_player(t_cub3d *data)
+void	draw_player(t_cub3d *data)
 {
-    int i = data->py - 1;
-	int j = 0;
-	
+	int	i;
+	int	j;
+
+	i = data->py - 1;
+	j = 0;
 	while (i < data->py + 1)
 	{
 		j = data->px - 1;
