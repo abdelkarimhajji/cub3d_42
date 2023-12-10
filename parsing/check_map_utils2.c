@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:24 by nachab            #+#    #+#             */
-/*   Updated: 2023/12/10 17:37:42 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/10 17:53:46 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ int	valid_cell_path(t_cub3d *game, int y, int x)
 
 void	check_valid_path(t_cub3d *game, int y, int x)
 {
+	if (game->tmp[y][x] == 'V' || game->tmp[y][x] == '1')
+		return ;
 	if (valid_cell_path(game, y, x))
 	{
 		printf("Map path isn't valid\n");
 		exit (1);
 	}
-	else if (game->tmp[y][x] == 'V' || game->tmp[y][x] == '1')
-		return ;
 	else if (game->tmp[y][x] == game->player.direction 
 		|| game->tmp[y][x] == '0')
 	{
