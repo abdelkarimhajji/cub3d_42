@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/12/10 13:58:59 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/10 15:02:20 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define HEIGHT_WIN 900
 # define SPEED_ROTATE 2
 # define MOVE_STEP 1
-# define MOVE_STEP_V 5
+# define MOVE_STEP_V 3
 # define VIEW_ANGLE 60
 
 typedef struct s_paths
