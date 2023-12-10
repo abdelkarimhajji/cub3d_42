@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:37 by nachab            #+#    #+#             */
-/*   Updated: 2023/12/10 13:34:27 by nachab           ###   ########.fr       */
+/*   Updated: 2023/12/10 13:44:32 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ int	check_extension(char *file, char *extension)
 	file_extension = ft_strchr(file, '.');
 	if (file_extension != NULL && 
 		ft_strncmp(file_extension, "./maps", 6) == 0)
+	{
+		file_extension++;
 		file_extension = ft_strchr(file_extension, '.');
-	else
-		return (1);
+	}
 	if (file_extension != NULL)
 	{
 		if (ft_strncmp(file_extension, extension, ft_strlen(extension)
