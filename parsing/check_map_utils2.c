@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:24 by nachab            #+#    #+#             */
-/*   Updated: 2023/12/10 13:33:47 by nachab           ###   ########.fr       */
+/*   Updated: 2023/12/10 14:49:29 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,26 @@ size_t	get_index(char *line, char *needle)
 	return (i);
 }
 
+int	valid_cell_path(t_cub3d *game, int y, int x)
+{
+	if (game->tmp[y][x] == ' ' || ((game->tmp[y][x] == '0' || game->tmp[y][x] 
+			== game->player.direction) && y == 0) 
+		|| ((game->tmp[y][x] == '0' || game->tmp[y][x] == 
+			game->player.direction) && game->tmp[y + 1] == NULL) 
+		|| ((game->tmp[y][x] == '0' || game->tmp[y][x] 
+			== game->player.direction) && x == 0) 
+		|| ((game->tmp[y][x] == '0' || game->tmp[y][x] 
+			== game->player.direction) && (game->tmp[y][x + 1] == '\n' 
+		|| game->tmp[y][x + 1] == '\0')))
+	{
+		return (1);
+	}
+	return (0);
+}
+
 void	check_valid_path(t_cub3d *game, int y, int x)
 {
-	if (game->tmp[y][x] == ' ' || (game->tmp[y][x] == '0' && y == 0) 
-		|| (game->tmp[y][x] == '0' && game->tmp[y + 1] == NULL) 
-		|| (game->tmp[y][x] == '0' && x == 0) 
-		|| (game->tmp[y][x] == '0' && (game->tmp[y][x + 1] == '\n' 
-		|| game->tmp[y][x + 1] == '\0')))
+	if (valid_cell_path(game, y, x))
 	{
 		printf("Map path isn't valid\n");
 		exit (1);
