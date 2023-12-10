@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:00:15 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/30 12:48:57 by nachab           ###   ########.fr       */
+/*   Updated: 2023/12/10 15:32:09 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ void	check_rgb_str(char **str)
 	while (str[i])
 	{
 		j = 0;
+		if (str[i][0] == '\n')
+		{
+			printf("Please fix the rgb values\n");
+			exit (1);
+		}
 		while (str[i][j])
 		{
 			if (!ft_isdigit(str[i][j]) && str[i][j] != '\n')
