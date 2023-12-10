@@ -6,11 +6,12 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:24 by nachab            #+#    #+#             */
-/*   Updated: 2023/12/10 14:49:29 by nachab           ###   ########.fr       */
+/*   Updated: 2023/12/10 17:25:17 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stddef.h>
 
 size_t	get_index(char *line, char *needle)
 {
@@ -25,20 +26,41 @@ size_t	get_index(char *line, char *needle)
 	return (i);
 }
 
+size_t	line_length(char *line, char *pos)
+{
+	size_t	i;
+
+	i = 0;
+	while (line[i] && &line[i] != pos)
+	{
+		i++;
+	}
+	return (i + 1);
+}
+
 int	valid_cell_path(t_cub3d *game, int y, int x)
 {
+	char	pos;
+	size_t	length;
+
+	pos = game->player.direction;
 	if (game->tmp[y][x] == ' ' || ((game->tmp[y][x] == '0' || game->tmp[y][x] 
-			== game->player.direction) && y == 0) 
+			== pos) && y == 0) 
 		|| ((game->tmp[y][x] == '0' || game->tmp[y][x] == 
-			game->player.direction) && game->tmp[y + 1] == NULL) 
+			pos) && game->tmp[y + 1] == NULL) 
 		|| ((game->tmp[y][x] == '0' || game->tmp[y][x] 
-			== game->player.direction) && x == 0) 
+			== pos) && x == 0) 
 		|| ((game->tmp[y][x] == '0' || game->tmp[y][x] 
-			== game->player.direction) && (game->tmp[y][x + 1] == '\n' 
+			== pos) && (game->tmp[y][x + 1] == '\n' 
 		|| game->tmp[y][x + 1] == '\0')))
 	{
 		return (1);
 	}
+	length = line_length(game->tmp[y], &game->tmp[y][x]);
+	if (y > 0 && length > ft_strlen(game->tmp[y - 1]))
+		return (1);
+	else if (game->tmp[y + 1] && length > ft_strlen(game->tmp[y - 1]))
+		return (1);
 	return (0);
 }
 
