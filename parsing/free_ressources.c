@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:47:32 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/29 15:04:00 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/10 12:54:16 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ void	free_cub_data(t_cub3d *data)
 
 void	close_callback(void *param)
 {
+	if (param)
+		exit(0);
 	exit(0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:47:38 by nachab            #+#    #+#             */
-/*   Updated: 2022/11/07 13:21:52 by nachab           ###   ########.fr       */
+/*   Updated: 2023/12/10 13:12:04 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*get_newline(char *buffer)
 	i = newline_index(buffer);
 	if (newline_index(buffer) == 0)
 	{
-		line = ft_strdup(buffer);
+		line = ft_strdupp(buffer);
 		return (line);
 	}
 	j = 0;

@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:18:46 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/30 15:17:56 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/10 13:09:44 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_data(t_cub3d *data)
 	data->old_x = WIDTH_WIN;
 }
 
-void	calcul_distance(t_cub3d *data, float ray_angle, int id_ray)
+void	calcul_distance(t_cub3d *data)
 {
 	data->distance_horz = distance_between_points(data->px, data->py,
 			data->hores_inters_x, data->hores_inters_y);
@@ -46,14 +46,14 @@ void	calcul_distance(t_cub3d *data, float ray_angle, int id_ray)
 void	check_ray_draw(t_cub3d *data, float ray_angle, int id_ray)
 {
 	if (ray_angle > 0 && ray_angle < 180)
-		check_ray_draw_down(data, ray_angle, id_ray);
+		check_ray_draw_down(data, ray_angle);
 	else
-		check_ray_draw_up(data, ray_angle, id_ray);
+		check_ray_draw_up(data, ray_angle);
 	if (ray_angle < 90 || ray_angle > 270)
-		check_ray_draw_right(data, ray_angle, id_ray);
+		check_ray_draw_right(data, ray_angle);
 	else
-		check_ray_draw_left(data, ray_angle, id_ray);
-	calcul_distance(data, ray_angle, id_ray);
+		check_ray_draw_left(data, ray_angle);
+	calcul_distance(data);
 	call_raycasting(data, ray_angle, id_ray);
 }
 

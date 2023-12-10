@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:27 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/30 13:47:31 by nachab           ###   ########.fr       */
+/*   Updated: 2023/12/10 13:16:34 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,5 @@ void	check_dimensions(t_cub3d *data)
 	if (i > 30)
 		exit(1);
 	data->height_map = i;
-	data->width_map = j;
+	data->width_map = highest;
 }

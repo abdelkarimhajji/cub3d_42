@@ -6,7 +6,7 @@
 /*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:37:30 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/29 12:56:25 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/10 12:56:55 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ray_casting(t_cub3d *data, float ray_angle,
 	}
 }
 
-void	check_ray_draw_down(t_cub3d *data, float ray_angle, int id_ray)
+void	check_ray_draw_down(t_cub3d *data, float ray_angle)
 {
 	data->hores_inters_y = floor((data->py / data->size_shape) + 1)
 		* data->size_shape;
@@ -65,7 +65,7 @@ void	check_ray_draw_down(t_cub3d *data, float ray_angle, int id_ray)
 	}
 }
 
-void	check_ray_draw_up(t_cub3d *data, float ray_angle, int id_ray)
+void	check_ray_draw_up(t_cub3d *data, float ray_angle)
 {
 	data->hores_inters_y = floor((data->py / data->size_shape))
 		* data->size_shape;
@@ -89,7 +89,7 @@ void	check_ray_draw_up(t_cub3d *data, float ray_angle, int id_ray)
 	}
 }
 
-void	check_ray_draw_right(t_cub3d *data, float ray_angle, int id_ray)
+void	check_ray_draw_right(t_cub3d *data, float ray_angle)
 {
 	data->vertcl_inters_x = floor((data->px / data->size_shape) + 1)
 		* data->size_shape;
@@ -112,7 +112,7 @@ void	check_ray_draw_right(t_cub3d *data, float ray_angle, int id_ray)
 	}
 }
 
-void	check_ray_draw_left(t_cub3d *data, float ray_angle, int id_ray)
+void	check_ray_draw_left(t_cub3d *data, float ray_angle)
 {
 	data->vertcl_inters_x = floor((data->px / data->size_shape))
 		* data->size_shape;

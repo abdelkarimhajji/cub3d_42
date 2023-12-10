@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 15:49:00 by nachab            #+#    #+#             */
-/*   Updated: 2023/10/30 12:22:03 by nachab           ###   ########.fr       */
+/*   Updated: 2023/12/10 13:12:30 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	newline_index(char *s)
 	return (0);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdupp(const char *s1)
 {
 	char	*str;
 	int		i;
@@ -54,7 +54,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (!s1)
 	{
-		buffer = ft_strdup(s2);
+		buffer = ft_strdupp(s2);
 		return (buffer);
 	}
 	i = 0;

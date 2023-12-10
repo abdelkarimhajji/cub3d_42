@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/11/30 13:47:10 by nachab           ###   ########.fr       */
+/*   Updated: 2023/12/10 12:57:02 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,14 +115,10 @@ void				controle_player(t_cub3d *data);
 void				check_wall_part_tow(t_cub3d *data, int *x, int *y);
 int					check_wall(t_cub3d *data);
 void				check_ray_draw(t_cub3d *data, float ray_angle, int id_ray);
-void				check_ray_draw_down(t_cub3d *data, float ray_angle,
-						int id_ray);
-void				check_ray_draw_up(t_cub3d *data, float ray_angle,
-						int id_ray);
-void				check_ray_draw_right(t_cub3d *data, float ray_angle,
-						int id_ray);
-void				check_ray_draw_left(t_cub3d *data, float ray_angle,
-						int id_ray);
+void				check_ray_draw_down(t_cub3d *data, float ray_angle);
+void				check_ray_draw_up(t_cub3d *data, float ray_angle);
+void				check_ray_draw_right(t_cub3d *data, float ray_angle);
+void				check_ray_draw_left(t_cub3d *data, float ray_angle);
 void				call_raycasting(t_cub3d *data, float ray_angle, int id_ray);
 
 # define SUCCESS 1

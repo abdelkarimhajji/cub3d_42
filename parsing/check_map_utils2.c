@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:24 by nachab            #+#    #+#             */
-/*   Updated: 2023/11/30 13:50:15 by nachab           ###   ########.fr       */
+/*   Updated: 2023/12/10 12:55:15 by ahajji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	get_index(char *line, char *needle)
 	return (i);
 }
 
-void	check_valid_path(t_game_data *game, int y, int x)
+void	check_valid_path(t_cub3d *game, int y, int x)
 {
     if (game->tmp[y][x] == ' ' || (game->tmp[y][x] == '0' && y == 0) 
         || (game->tmp[y][x] == '0' && game->tmp[y + 1] == NULL) || (game->tmp[y][x] == '0' && x == 0) 
