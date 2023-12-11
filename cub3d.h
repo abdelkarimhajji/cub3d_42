@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:19:16 by ahajji            #+#    #+#             */
-/*   Updated: 2023/12/10 15:57:50 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/11 14:21:47 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ char				*r_rgb_str(char *line);
 long				rgb_to_hex(char *line);
 uint32_t			get_texel(mlx_image_t *img, int x, int y);
 
+void				check_comma(char *line);
+int					beflastline(char **map, int y);
 void				duplicate_player(t_cub3d *data);
 void				get_player_pos(t_cub3d *data);
 void				check_dimensions(t_cub3d *data);

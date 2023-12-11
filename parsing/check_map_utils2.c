@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahajji <ahajji@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:59:24 by nachab            #+#    #+#             */
-/*   Updated: 2023/12/10 17:53:46 by ahajji           ###   ########.fr       */
+/*   Updated: 2023/12/11 14:23:44 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ int	valid_cell_path(t_cub3d *game, int y, int x)
 	size_t	length;
 
 	pos = game->player.direction;
+	length = line_length(game->tmp[y], &game->tmp[y][x]);
+	if (y > 0 && length > (ft_strlen(game->tmp[y - 1]) - 1))
+		return (1);
+	else if (game->tmp[y + 1] && length > (ft_strlen(game->tmp[y + 1]) 
+			- beflastline(game->tmp, y)))
+		return (1);
 	if (game->tmp[y][x] == ' ' || ((game->tmp[y][x] == '0' || game->tmp[y][x] 
 			== pos) && y == 0) 
 		|| ((game->tmp[y][x] == '0' || game->tmp[y][x] == 
@@ -56,11 +62,6 @@ int	valid_cell_path(t_cub3d *game, int y, int x)
 	{
 		return (1);
 	}
-	length = line_length(game->tmp[y], &game->tmp[y][x]);
-	if (y > 0 && length > ft_strlen(game->tmp[y - 1]))
-		return (1);
-	else if (game->tmp[y + 1] && length > ft_strlen(game->tmp[y + 1]))
-		return (1);
 	return (0);
 }
 

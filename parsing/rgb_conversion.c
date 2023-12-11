@@ -6,7 +6,7 @@
 /*   By: nachab <nachab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 17:00:15 by nachab            #+#    #+#             */
-/*   Updated: 2023/12/10 16:40:07 by nachab           ###   ########.fr       */
+/*   Updated: 2023/12/11 13:04:35 by nachab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	nb_rgb_elem(char **line)
 	return (i);
 }
 
-long	rgb_to_hex(char *line)
+long	return_hex_rgb(char *line)
 {
 	char	**values;
 	long	hex_val;
@@ -91,4 +91,10 @@ long	rgb_to_hex(char *line)
 		}
 	}
 	return (-1);
+}
+
+long	rgb_to_hex(char *line)
+{
+	check_comma(line);
+	return (return_hex_rgb(line));
 }
